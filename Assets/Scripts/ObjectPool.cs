@@ -29,41 +29,53 @@ public  class ObjectPool : MonoBehaviour
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         Queue<GameObject> queue;
-        GameObject createdObject;
 
         foreach (GameObject _prefab in _prefabs)
         {
             queue = new Queue<GameObject>();
-
-            for(int i = 0; i < 20; i++)
-            {
-                createdObject = Instantiate(_prefab, transform.parent);
-                createdObject.SetActive(false);
-                queue.Enqueue(_prefab);
-            }
-
             _poolDictionary.Add(_prefab.name, queue);
         }
     }
 
-    public GameObject[] GetHighlightPaths(int quantity)
+    public GameObject[] GetHighlightPaths(int _quantity, string _name)
     {
-        GameObject[] _paths = new GameObject[quantity];
+        GameObject[] _paths = new GameObject[_quantity];
 
-        for(int i = 0; i < quantity; i++)
+        for(int i = 0; i < _quantity; i++)
         {
-            if (_poolDictionary["HighlightPath"].Count > 0)
+            if (_poolDictionary[_name].Count > 0)
             {
-                _paths[i] = _poolDictionary["HighlightPath"].Dequeue();
+                _paths[i] = _poolDictionary[_name].Dequeue();
                 _paths[i].SetActive(true);
             }
             else
             {
-                _paths[i]= Instantiate(_prefabs.Where(obj => obj.name == "HighlightPath").SingleOrDefault(), transform.parent);
+                _paths[i]= Instantiate(_prefabs.Where(obj => obj.name == _name).SingleOrDefault(), transform.parent);
             }
         }
 
         return _paths;
     }
 
+    public GameObject GetHighlightPath(string _name)
+    {
+        GameObject _path;
+        if (_poolDictionary[_name].Count > 0)
+        {
+            _path=_poolDictionary[_name].Dequeue();
+            _path.SetActive(true);
+        }
+        else
+        {
+            _path = Instantiate(_prefabs.Where(obj => obj.name == _name).SingleOrDefault(), transform.parent);
+        }
+
+        return _path;
+    }
+
+    public void RemoveHighlightPath(PathPiece _path)
+    {
+        _poolDictionary[_path.Name].Enqueue(_path.gameObject);
+        _path.gameObject.SetActive(false);
+    }
 }

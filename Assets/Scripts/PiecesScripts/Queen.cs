@@ -6,7 +6,8 @@ public class Queen : Piece
 {
     public override void CreatePath()
     {
-        throw new System.NotImplementedException();
+        PathCalculator.DiagonalPath(this);
+        PathCalculator.VerticalPath(this);
     }
 
 }
