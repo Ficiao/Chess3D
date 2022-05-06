@@ -6,7 +6,7 @@ public class Bishop : Piece
 {
     public override void CreatePath()
     {
-        throw new System.NotImplementedException();
+        PathCalculator.DiagonalPath(this);
     }
 
 }

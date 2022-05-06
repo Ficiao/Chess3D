@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void Selected(Piece self);
+
 public abstract class Piece : MonoBehaviour
 {
      public enum SideColor{
@@ -11,37 +13,45 @@ public abstract class Piece : MonoBehaviour
 
     [SerializeField]
     private SideColor _pieceColor;
+    public SideColor PieceColor { get => _pieceColor; }
     private Renderer _renderer;
     private Vector3 _startPosition;
     public Vector3 StartPosition { get => _startPosition; }
-    private bool active;
+    private bool _active;
+    public bool Active { get => _active; set { _active = false; _renderer.material.color = _startColor; } }
     private Color _startColor;
-    public SideColor PieceColor { get => PieceColor; }
+
+    public static event Selected Selected;
 
     public abstract void CreatePath();
 
     private void Start()
     {
         _startPosition = transform.position;
-        active = false;
+        _active = false;
         _renderer = GetComponent<Renderer>();
         _startColor = _renderer.material.color;
     }
 
     private void OnMouseDown()
     {
-        active = true;
+        _active = true;
+        Selected?.Invoke(this);
         CreatePath();
+        _renderer.material.color = Color.yellow;
     }
 
     private void OnMouseEnter()
     {
-        _renderer.material.color = Color.yellow;
+        if (PieceController.Instance.AnyActive == false)
+        {
+            _renderer.material.color = Color.yellow;
+        }
     }
 
     private void OnMouseExit()
     {
-        if (active == false)
+        if (_active == false)
         {
             _renderer.material.color = _startColor;
         }
@@ -50,6 +60,13 @@ public abstract class Piece : MonoBehaviour
     public void Die()
     {
         gameObject.SetActive(false);
+    }
+
+    public void Move(Vector3 _position)
+    {
+        _position.y = 0;
+        BoardState.Instance.SetField(this, (int)(_position.x / 1.5f), (int)(_position.z / 1.5f));
+        transform.localPosition = _position;
     }
 
 }

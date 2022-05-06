@@ -6,7 +6,14 @@ public class Pawn : Piece
 {
     public override void CreatePath()
     {
-        throw new System.NotImplementedException();
+        if (PieceColor == SideColor.Black)
+        {
+            PathCalculator.PathOneSpot(this, 1, 0);
+        }
+        else
+        {
+            PathCalculator.PathOneSpot(this, -1, 0);
+        }
     }
 
 }
