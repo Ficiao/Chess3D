@@ -64,11 +64,16 @@ public class PieceController : MonoBehaviour
         PathPiece.PathSelect -= PathSelected;
     }
 
-    private void PathSelected(Vector3 _position)
+    private void PathSelected(PathPiece _piece)
     {
-        _activePiece.Move(_position);
+        SideColor chessed = BoardState.Instance.CalculateCheckState(_activePiece.transform.localPosition, _piece.transform.localPosition);
+        _activePiece.Move(_piece.transform.localPosition);
         _activePiece.Active = false;
         _activePiece = null;
+        if(_piece.AssignedPiece != null)
+        {
+            _piece.AssignedPiece.Die();
+        }
         PieceMoved?.Invoke();
     }
 

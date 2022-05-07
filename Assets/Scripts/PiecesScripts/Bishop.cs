@@ -9,4 +9,8 @@ public class Bishop : Piece
         PathCalculator.DiagonalPath(this);
     }
 
+    public override bool IsAttackingKing(int _xPosition, int _yPosition)
+    {
+        return CheckStateCalculator.SearchForKingDiagonal(_xPosition, _yPosition, PieceColor);
+    }
 }

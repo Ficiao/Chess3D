@@ -10,4 +10,8 @@ public class Rook : Piece
         PathCalculator.VerticalPath(this);
     }
 
+    public override bool IsAttackingKing(int _xPosition, int _yPosition)
+    {
+        return CheckStateCalculator.SearchForKingVertical(_xPosition, _yPosition, PieceColor);
+    }
 }

@@ -4,248 +4,70 @@ using UnityEngine;
 
 public static class PathCalculator
 {
+    private static readonly int[,] DiagonalLookup =
+    {
+       { 1, 1 },
+       { 1, -1 },
+       { -1, 1 },
+       { -1, -1 }
+    };
+
+    private static readonly int[,] VerticalLookup =
+    {
+       { 1, 0 },
+       { -1, 0 },
+       { 0, 1 },
+       { 0, -1 }
+    };
+
     public static void DiagonalPath(Piece _caller)
     {
-        GameObject _path;
-        Vector3 _position = new Vector3();
-        Piece _piece;
-
-        int _xSource = (int)(_caller.transform.localPosition.x / 1.5f);
-        int _ySource = (int)(_caller.transform.localPosition.z / 1.5f);
-
-
-        for (int i = 1; (_xSource + i) < BoardState.Instance.Width && (_ySource + i) < BoardState.Instance.Length; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource + i, _ySource + i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_xSource + i) < BoardState.Instance.Width && (_ySource - i) >= 0; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource + i, _ySource - i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_xSource - i) >= 0 && (_ySource - i) >= 0; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource - i, _ySource - i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_xSource - i) >= 0 && (_ySource + i) < BoardState.Instance.Length; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource - i, _ySource + i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
+        CalculatePath(_caller, DiagonalLookup);
     }
 
     public static void VerticalPath(Piece _caller)
     {
+        CalculatePath(_caller, VerticalLookup);
+    }
+
+    private static void CalculatePath(Piece _caller, int[,] _lookupTable)
+    {
         GameObject _path;
         Vector3 _position = new Vector3();
         Piece _piece;
 
-        int _xSource = (int)(_caller.transform.localPosition.x / 1.5f);
-        int _ySource = (int)(_caller.transform.localPosition.z / 1.5f);
+        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Displacement);
+        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
 
-
-        for (int i = 1; (_xSource + i) < BoardState.Instance.Width; i++)
+        for (int j = 0; j < DiagonalLookup.GetLength(0); j++)
         {
-            _piece = BoardState.Instance.GetField(_xSource + i, _ySource);
-            if (_piece == null)
+            for (int i = 1; BoardState.Instance.IsInBorders(_xSource + i * _lookupTable[j, 0], _ySource + i * _lookupTable[j, 1]); i++)
             {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z;
-                _position.y = _path.transform.localPosition.y;
+                _piece = BoardState.Instance.GetField(_xSource + i * _lookupTable[j, 0], _ySource + i * _lookupTable[j, 1]);
+                if (_piece == null)
+                {
+                    _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
+                    _position.x = _caller.transform.localPosition.x + i * BoardState.Displacement * _lookupTable[j, 0];
+                    _position.z = _caller.transform.localPosition.z + i * BoardState.Displacement * _lookupTable[j, 1];
+                    _position.y = _path.transform.localPosition.y;
 
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z;
-                _position.y = _path.transform.localPosition.y;
+                    _path.transform.localPosition = _position;
+                }
+                else if (_piece.PieceColor != _caller.PieceColor)
+                {
+                    _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
+                    _path.GetComponent<PathPiece>().AssignPiece(_piece);
+                    _position.x = _caller.transform.localPosition.x + i * BoardState.Displacement * _lookupTable[j, 0];
+                    _position.z = _caller.transform.localPosition.z + i * BoardState.Displacement * _lookupTable[j, 1];
+                    _position.y = _path.transform.localPosition.y;
 
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_xSource - i) >= 0; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource - i, _ySource);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = -i * 1.5f + _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_ySource + i) < BoardState.Instance.Length; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource, _ySource + i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z + i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        for (int i = 1; (_ySource - i) >= 0; i++)
-        {
-            _piece = BoardState.Instance.GetField(_xSource, _ySource - i);
-            if (_piece == null)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-            }
-            else if (_piece.PieceColor != _caller.PieceColor)
-            {
-                _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = _caller.transform.localPosition.x;
-                _position.z = _caller.transform.localPosition.z - i * 1.5f;
-                _position.y = _path.transform.localPosition.y;
-
-                _path.transform.localPosition = _position;
-                break;
-            }
-            else
-            {
-                break;
+                    _path.transform.localPosition = _position;
+                    break;
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }
@@ -255,17 +77,17 @@ public static class PathCalculator
         GameObject _path;
         Vector3 _position = new Vector3();
 
-        int _xSource = (int)(_caller.transform.localPosition.x / 1.5f);
-        int _ySource = (int)(_caller.transform.localPosition.z / 1.5f);
+        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Displacement);
+        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
 
-        if (_xSource + _xDirection < BoardState.Instance.Length && _xSource + _xDirection >= 0 && _ySource + _yDirection < BoardState.Instance.Width && _ySource + _yDirection >= 0)
+        if (BoardState.Instance.IsInBorders(_xSource + _xDirection, _ySource + _yDirection))
         {
-            Piece _piece = BoardState.Instance.GetField((int)(_caller.transform.localPosition.x / 1.5f) + _xDirection, (int)(_caller.transform.localPosition.z / 1.5f) + _yDirection);
+            Piece _piece = BoardState.Instance.GetField(_xSource + _xDirection, _ySource + _yDirection);
             if (_piece == null)
             {
                 _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = _caller.transform.localPosition.x + _xDirection * 1.5f;
-                _position.z = _caller.transform.localPosition.z + _yDirection * 1.5f;
+                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Displacement;
+                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Displacement;
                 _position.y = _path.transform.localPosition.y;
 
                 _path.transform.localPosition = _position;
@@ -273,8 +95,9 @@ public static class PathCalculator
             else if (_piece.PieceColor != _caller.PieceColor)
             {
                 _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
-                _position.x = _caller.transform.localPosition.x + _xDirection * 1.5f;
-                _position.z = _caller.transform.localPosition.z + _yDirection * 1.5f;
+                _path.GetComponent<PathPiece>().AssignPiece(_piece);
+                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Displacement;
+                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Displacement;
                 _position.y = _path.transform.localPosition.y;
 
                 _path.transform.localPosition = _position;
@@ -282,4 +105,5 @@ public static class PathCalculator
             }
         }
     }
+
 }

@@ -708,9 +708,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessField
       objectReference: {fileID: 0}
+    - target: {fileID: 4976436488007087785, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4976436488128495570, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
       propertyPath: m_Name
       value: Objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436488560348568, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436488560348568, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436489060130125, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436489108504193, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436489227073631, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976436489441558496, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976436489633430120, guid: fccbfaf34c45cb847b1b146d8c809427, type: 3}
       propertyPath: _prefabs.Array.size
