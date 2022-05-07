@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void PathSelect(Vector3 position);
+public delegate void PathSelect(PathPiece piece);
 
 public class PathPiece : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class PathPiece : MonoBehaviour
 
     private Color _startColor;
     private Renderer _renderer;
+    private Piece _assignedPiece;
+    public Piece AssignedPiece { get => _assignedPiece; set => _assignedPiece = value; }
 
     void OnEnable()
     {
@@ -43,13 +45,28 @@ public class PathPiece : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _renderer.material.color = _startColor;
-        PathSelect?.Invoke(transform.localPosition);
+        Selected();
     }
 
     private void Disable()
     {
         ObjectPool.Instance.RemoveHighlightPath(this);
+        if (_assignedPiece != null)
+        {
+            _assignedPiece.AssignedAsEnemy = null;
+            _assignedPiece = null;
+        }
     }
 
+    public void AssignPiece(Piece _piece)
+    {
+        _assignedPiece = _piece;
+        _assignedPiece.AssignedAsEnemy = this;
+    }
+
+    public void Selected()
+    {
+        _renderer.material.color = _startColor;
+        PathSelect?.Invoke(this);
+    }
 }
