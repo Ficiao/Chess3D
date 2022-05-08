@@ -36,4 +36,17 @@ public class Knight : Piece
 
         return false;
     }
+
+    public override bool CanMove(int _xPosition, int _yPosition)
+    {
+        for (int i = 0; i < LookupMoves.GetLength(0); i++)
+        {
+            if (GameEndCalculator.CanMoveToSpot(_xPosition, _yPosition, LookupMoves[i, 0], LookupMoves[i, 1], PieceColor))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

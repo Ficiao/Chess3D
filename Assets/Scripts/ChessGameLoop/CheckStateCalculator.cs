@@ -8,6 +8,7 @@ public static class CheckStateCalculator
     {
         bool _whiteCheck = false;
         bool _blackCheck = false;
+
         for(int i = 0; i < grid.GetLength(0); i++)
         {
             for(int j = 0; j < grid.GetLength(1); j++)
@@ -21,11 +22,11 @@ public static class CheckStateCalculator
                 {
                     if (grid[i, j].PieceColor == SideColor.Black)
                     {
-                        _blackCheck = true;
+                        _whiteCheck = true;
                     }
                     else
                     {
-                        _whiteCheck = true;
+                        _blackCheck = true;
                     }
                 }
             }            
@@ -78,7 +79,7 @@ public static class CheckStateCalculator
                     }
                     else
                     {
-                        return false; 
+                        break; 
                     }
                 }
             }
@@ -105,7 +106,6 @@ public static class CheckStateCalculator
                 }
             }
         }
-
         return false;
     }
 }

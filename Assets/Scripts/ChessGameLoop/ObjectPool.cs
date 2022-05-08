@@ -67,7 +67,7 @@ public  class ObjectPool : MonoBehaviour
         }
         else
         {
-            _path = Instantiate(_prefabs.Where(obj => obj.name == _name).SingleOrDefault(), transform.parent);
+            _path = Instantiate(_prefabs.Where(obj => obj.name == _name).SingleOrDefault(), transform.parent);            
         }
 
         return _path;
