@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
     private SideColor _turnPlayer;
     public SideColor TurnPlayer { get => _turnPlayer; }
+    private SideColor _checkedSide;
+    public SideColor CheckedSide { get => _checkedSide; set => _checkedSide = value == SideColor.Both ? _turnPlayer == SideColor.White ? SideColor.Black : SideColor.White : value; }
+    private Pawn _passantable = null;
+    public Pawn Passantable { get => _passantable; set => _passantable = value; }
 
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
@@ -25,24 +29,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        PathPiece.PathSelect += ChangeTurn;
-    }
-
-    private void OnDisable()
-    {
-        PathPiece.PathSelect -= ChangeTurn;
-    }
-
     private void Start()
     {
         _turnPlayer = SideColor.White;
+        _checkedSide = SideColor.None;
     }
 
-    private void ChangeTurn(PathPiece _piece)
+    public void ChangeTurn()
     {
         _turnPlayer = _turnPlayer == SideColor.White ? SideColor.Black : SideColor.White;
+        SideColor _winner = BoardState.Instance.CheckIfGameOver();
+        if (_winner != SideColor.None)
+        {
+            GameEnd(_winner);
+        }
     }
 
+    public void GameEnd(SideColor _winner)
+    {
+        Debug.Log("Check mate "+_winner);
+    }
 }

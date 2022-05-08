@@ -70,6 +70,11 @@ public class BoardState : MonoBehaviour
         grid[_widthNew, _lengthNew] = _piece;
     }
 
+    public void ClearField(int _width, int _length)
+    {
+        grid[_width, _length] = null;
+    }
+
     public bool IsInBorders(int _x, int _y)
     {
         if(_x >=0 && _x < _width && _y >= 0 && _y < _length)
@@ -80,14 +85,8 @@ public class BoardState : MonoBehaviour
         return false;
     }
 
-    public SideColor CalculateCheckState(Vector3 _oldPosition, Vector3 _newPosition)
+    public SideColor CalculateCheckState(int _xOld, int _yOld, int _xNew, int _yNew)
     {
-        int _xOld = (int)(_oldPosition.x / BoardState.Displacement);
-        int _yOld = (int)(_oldPosition.z / BoardState.Displacement);
-
-        int _xNew = (int)(_newPosition.x / BoardState.Displacement);
-        int _yNew = (int)(_newPosition.z / BoardState.Displacement);
-
         Piece _missplaced = grid[_xNew, _yNew];
         grid[_xNew, _yNew] = grid[_xOld, _yOld];
         grid[_xOld, _yOld] = null;
@@ -98,5 +97,10 @@ public class BoardState : MonoBehaviour
         grid[_xNew, _yNew] = _missplaced;
 
         return _checkSide;
+    }
+
+    public SideColor CheckIfGameOver()
+    {
+        return GameEndCalculator.CheckIfGameEnd(grid);
     }
 }
