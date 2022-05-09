@@ -7,11 +7,8 @@ public class BoardState : MonoBehaviour
 {
     private Piece[,] grid;
     [SerializeField]
-    private int _width;
-    public int Width { get => _width; }
-    [SerializeField]
-    private int _length;
-    public int Length { get => _length; }
+    private int _boardSize;
+    public int BoardSize { get => _boardSize; }
     [SerializeField]
     private GameObject _blackPieces;
     [SerializeField]
@@ -36,8 +33,22 @@ public class BoardState : MonoBehaviour
 
     private void Start()
     {
-        grid = new Piece[_width, _length];
-        foreach(Transform child in _blackPieces.transform)
+        grid = new Piece[_boardSize, _boardSize];
+        InitializeGrid();
+
+    }
+
+    public void InitializeGrid()
+    {
+        for(int i = 0; i < grid.GetLength(0); i++)
+        {
+            for(int j = 0; j < grid.GetLength(1); j++)
+            {
+                grid[i, j] = null;
+            }
+        }
+
+        foreach (Transform child in _blackPieces.transform)
         {
             int x = (int)(child.localPosition.x / Displacement);
             int y = (int)(child.localPosition.z / Displacement);
@@ -77,7 +88,7 @@ public class BoardState : MonoBehaviour
 
     public bool IsInBorders(int _x, int _y)
     {
-        if(_x >=0 && _x < _width && _y >= 0 && _y < _length)
+        if(_x >=0 && _x < _boardSize && _y >= 0 && _y < _boardSize)
         {
             return true;
         }
@@ -106,13 +117,55 @@ public class BoardState : MonoBehaviour
 
     public void ResetPieces()
     {
+        Piece _piece;
+        Queue<Piece> _pieces = new Queue<Piece>();
         foreach (Transform child in _blackPieces.transform)
         {
-            child.GetComponent<Piece>().ResetPosition();
+            _piece = child.GetComponent<Piece>();
+            if (_piece.WasPawn != null)
+            {
+                _pieces.Enqueue(_piece.WasPawn);
+                _piece.WasPawn.gameObject.SetActive(true);
+            }
+            _pieces.Enqueue(_piece);
         }
         foreach (Transform child in _whitePieces.transform)
         {
-            child.GetComponent<Piece>().ResetPosition();
+            _piece = child.GetComponent<Piece>();
+            if (_piece.WasPawn != null)
+            {
+                _pieces.Enqueue(_piece.WasPawn);
+                _piece.WasPawn.gameObject.SetActive(true);
+            }
+            _pieces.Enqueue(_piece);
         }
+
+        while (_pieces.Count > 0)
+        {
+            _piece = _pieces.Dequeue();
+            if (_piece.WasPawn == null)
+            {
+                _piece.ResetPosition();
+                _piece.HasMoved = false;
+            }
+            else
+            {
+                Destroy(_piece.gameObject);
+            }
+        }
+
+        InitializeGrid();
     }
+
+    public void PromotePawn(Pawn _promotingPawn, Piece _piece)
+    {
+        int x = (int)(_promotingPawn.transform.localPosition.x / Displacement);
+        int y = (int)(_promotingPawn.transform.localPosition.z / Displacement);
+
+        grid[x, y] = _piece;
+        _piece.WasPawn = _promotingPawn;
+        _piece.transform.position = _promotingPawn.transform.position;
+        _promotingPawn.gameObject.SetActive(false);
+    }
+
 }
