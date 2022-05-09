@@ -100,19 +100,21 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void Move(int _xPosition, int _yPosition)
     {
-        int _xSelf = (int)(transform.position.x / BoardState.Displacement);
-        int _ySelf = (int)(transform.position.z / BoardState.Displacement);
+        int _xSelf = (int)(transform.localPosition.x / BoardState.Displacement);
+        int _ySelf = (int)(transform.localPosition.z / BoardState.Displacement);
 
         MoveTracker.Instance.AddMove(_xSelf, _ySelf, _xPosition, _yPosition, GameManager.Instance.TurnCount);
+
         if(this is Pawn && GameManager.Instance.Passantable)
         {
             int _direction = PieceColor == SideColor.Black ? 1 : -1;
 
-            if (BoardState.Instance.IsInBorders(_xPosition + _direction, _yPosition))
+            if (_yPosition * BoardState.Displacement == GameManager.Instance.Passantable.transform.localPosition.z)
             {
-                if (BoardState.Instance.GetField(_xPosition + _direction, _yPosition) == GameManager.Instance.Passantable)
+                if (_xSelf * BoardState.Displacement == GameManager.Instance.Passantable.transform.localPosition.x
+                    && _xSelf!= _xPosition)
                 {
-                    MoveTracker.Instance.AddMove(_xPosition + _direction, _yPosition, -1, -1, GameManager.Instance.TurnCount);
+                    MoveTracker.Instance.AddMove(_xPosition - _direction, _yPosition, -1, -1, GameManager.Instance.TurnCount);
                 }
             }
         }
@@ -124,6 +126,7 @@ public abstract class Piece : MonoBehaviour
         _position.y = 0;
         transform.localPosition = _position;
         _hasMoved = true;
+        GameManager.Instance.Passantable = null;
     }
 
 }

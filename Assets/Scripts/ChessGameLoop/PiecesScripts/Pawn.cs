@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Pawn : Piece
 {
-    [SerializeField]
-    private GameObject _queenPrefab;
-
     public override void CreatePath()
     {
         int _xSource = (int)(transform.localPosition.x / BoardState.Displacement);
@@ -75,6 +72,8 @@ public class Pawn : Piece
     public override void Move(int _xPosition, int _yPosition)
     {
         int _xPiece = (int)(transform.localPosition.x / BoardState.Displacement);
+        base.Move(_xPosition, _yPosition);
+
 
         if (Mathf.Abs(_xPiece - _xPosition) == 2)
         {
@@ -85,8 +84,7 @@ public class Pawn : Piece
         {
             GameManager.Instance.PawnPromoting(this);
         }
-
-        base.Move(_xPosition, _yPosition);        
+    
     }
 
     public override bool IsAttackingKing(int _xPosition, int _yPosition)

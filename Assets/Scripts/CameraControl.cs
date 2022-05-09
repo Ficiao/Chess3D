@@ -23,7 +23,7 @@ public class CameraControl : MonoBehaviour
         var _fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var _movementSpeed = _fastMode ? _fastMovementSpeed : this._movementSpeed;
 
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
+        if ((Input.GetKey(KeyCode.A)))
         {
             transform.position = TryToMove(transform.position, (-transform.right * _movementSpeed * Time.deltaTime));
         }
@@ -33,17 +33,17 @@ public class CameraControl : MonoBehaviour
             transform.position = TryToMove(transform.position, (Vector3.up * _movementSpeed * Time.deltaTime));
         }
 
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.position = TryToMove(transform.position, (transform.right * _movementSpeed * Time.deltaTime));
         }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
             transform.position = TryToMove(transform.position, (transform.forward * _movementSpeed * Time.deltaTime));
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S))
         {
             transform.position = TryToMove(transform.position, (-transform.forward * _movementSpeed * Time.deltaTime));
         }
