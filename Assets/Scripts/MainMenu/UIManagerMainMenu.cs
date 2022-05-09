@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,11 +10,17 @@ public class UIManagerMainMenu : MonoBehaviour
     [SerializeField]
     private GameObject _settingsMenu;
     [SerializeField]
+    private GameObject _loadingScreen;
+    [SerializeField]
     private SettingsLevels _settings;
     [SerializeField]
     private Slider _volumeSlider;
     [SerializeField]
     private List<AudioSource> _sounds;
+    [SerializeField]
+    private Slider _loadingSlider;
+    [SerializeField]
+    private TextMeshProUGUI _loadPercent;
 
     private static UIManagerMainMenu _instance;
     public static UIManagerMainMenu Instance { get => _instance; }
@@ -41,12 +48,26 @@ public class UIManagerMainMenu : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("ChessGameLoop");
+        StartCoroutine(AsyncLoading("ChessGameLoop"));
+        _loadingScreen.SetActive(true);
     }
 
     public void Replay()
     {
-        SceneManager.LoadScene("ChessReplay");
+        StartCoroutine(AsyncLoading("ChessReplay"));
+        _loadingScreen.SetActive(true);
+    }
+
+    IEnumerator AsyncLoading(string _scene)
+    {
+        AsyncOperation _loading = SceneManager.LoadSceneAsync(_scene);
+
+        while (_loading.isDone == false)
+        {
+            _loadingSlider.value = _loading.progress;
+            _loadPercent.SetText((int)(_loading.progress * 100) + "%");
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public void Settings()

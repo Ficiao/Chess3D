@@ -13,7 +13,6 @@ public enum SideColor
 
 public abstract class Piece : MonoBehaviour
 {
-
     [SerializeField]
     private SideColor _pieceColor;
     public SideColor PieceColor { get => _pieceColor; }
@@ -22,12 +21,14 @@ public abstract class Piece : MonoBehaviour
     private bool _active = false;
     public bool Active { get => _active; set { _active = false; _renderer.material.color = _startColor; } }
     private Color _startColor;
-    private bool _moved = false;
-    public bool HasMoved { get => _moved; set => _moved = true; }
+    private bool _hasMoved = false;
+    public bool HasMoved { get => _hasMoved; set => _hasMoved = value; }
     private PathPiece _assignedAsEnemy = null;
     public PathPiece AssignedAsEnemy { get => _assignedAsEnemy; set => _assignedAsEnemy = value; }
     private PathPiece _assignedAsCastle = null;
     public PathPiece AssignedAsCastle { get => _assignedAsCastle; set { _assignedAsCastle = value; _renderer.material.color = _startColor; } }
+    private Pawn _wasPawn = null;
+    public Pawn WasPawn { get => _wasPawn; set => _wasPawn = value; }
 
     public static event Selected Selected;
 
@@ -99,15 +100,30 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void Move(int _xPosition, int _yPosition)
     {
-        MoveTracker.Instance.AddMove((int)(transform.position.x / BoardState.Displacement), (int)(transform.position.y / BoardState.Displacement), 
-            _xPosition, _yPosition, GameManager.Instance.TurnCount);
+        int _xSelf = (int)(transform.position.x / BoardState.Displacement);
+        int _ySelf = (int)(transform.position.z / BoardState.Displacement);
+
+        MoveTracker.Instance.AddMove(_xSelf, _ySelf, _xPosition, _yPosition, GameManager.Instance.TurnCount);
+        if(this is Pawn && GameManager.Instance.Passantable)
+        {
+            int _direction = PieceColor == SideColor.Black ? 1 : -1;
+
+            if (BoardState.Instance.IsInBorders(_xPosition + _direction, _yPosition))
+            {
+                if (BoardState.Instance.GetField(_xPosition + _direction, _yPosition) == GameManager.Instance.Passantable)
+                {
+                    MoveTracker.Instance.AddMove(_xPosition + _direction, _yPosition, -1, -1, GameManager.Instance.TurnCount);
+                }
+            }
+        }
+
         BoardState.Instance.SetField(this, _xPosition, _yPosition);
         Vector3 _position = transform.localPosition;
         _position.x = _xPosition * BoardState.Displacement;
         _position.z = _yPosition * BoardState.Displacement;
         _position.y = 0;
         transform.localPosition = _position;
-        _moved = true;
+        _hasMoved = true;
     }
 
 }

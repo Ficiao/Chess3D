@@ -10,6 +10,10 @@ public class Rook : Piece
     public override void CreatePath()
     {
         PathCalculator.VerticalPath(this);
+        if (_king == null)
+        {
+            return;
+        }
         if (_king.HasMoved == false && HasMoved == false)
         {
             PathCalculator.CastleSpot(this, _king);

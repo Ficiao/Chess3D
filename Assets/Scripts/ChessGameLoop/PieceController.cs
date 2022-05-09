@@ -8,6 +8,8 @@ public class PieceController : MonoBehaviour
     public bool AnyActive { get => _activePiece != null; }
     [SerializeField]
     private new Camera camera;
+    [SerializeField]
+    private AudioSource _moveSound;
 
     public static event PieceMoved PieceMoved;
 
@@ -71,6 +73,7 @@ public class PieceController : MonoBehaviour
         int _xPath = (int)(_path.transform.localPosition.x / BoardState.Displacement);
         int _yPath = (int)(_path.transform.localPosition.z / BoardState.Displacement);
 
+        GameManager.Instance.Passantable = null;
         if (_path.AssignedCastle == false)
         {
             SideColor _checked = BoardState.Instance.CalculateCheckState(_xPiece, _yPiece, _xPath, _yPath);
@@ -103,11 +106,11 @@ public class PieceController : MonoBehaviour
             _path.AssignedCastle.AssignedAsCastle = null;
         }
 
-        GameManager.Instance.Passantable = null;
         _activePiece.Active = false;
         _activePiece = null;
         PieceMoved?.Invoke();
         GameManager.Instance.ChangeTurn();
+        _moveSound.Play();
     }
 
     private void PieceSelected(Piece _piece)
