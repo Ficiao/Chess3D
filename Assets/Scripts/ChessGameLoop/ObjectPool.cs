@@ -8,6 +8,7 @@ public  class ObjectPool : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
     [SerializeField]
     private List<GameObject> _prefabs;
+    private Queue<Piece> _pieces;
 
     private static ObjectPool _instance;
     public static ObjectPool Instance { get => _instance; } 
@@ -27,6 +28,7 @@ public  class ObjectPool : MonoBehaviour
     private void Start()
     {
         _poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        _pieces = new Queue<Piece>();
 
         Queue<GameObject> queue;
 
@@ -77,5 +79,19 @@ public  class ObjectPool : MonoBehaviour
     {
         _poolDictionary[_path.Name].Enqueue(_path.gameObject);
         _path.gameObject.SetActive(false);
+    }
+
+    public void AddPiece(Piece _piece)
+    {
+        _pieces.Enqueue(_piece);
+        _piece.gameObject.SetActive(false);
+    }
+
+    public void ResetPieces()
+    {
+        while (_pieces.Count > 0)
+        {
+            _pieces.Dequeue().gameObject.SetActive(true);
+        }
     }
 }

@@ -19,7 +19,6 @@ public abstract class Piece : MonoBehaviour
     public SideColor PieceColor { get => _pieceColor; }
     private Renderer _renderer;
     private Vector3 _startPosition;
-    public Vector3 StartPosition { get => _startPosition; }
     private bool _active = false;
     public bool Active { get => _active; set { _active = false; _renderer.material.color = _startColor; } }
     private Color _startColor;
@@ -90,11 +89,18 @@ public abstract class Piece : MonoBehaviour
     public void Die()
     {
         BoardState.Instance.ClearField((int)(transform.localPosition.x / BoardState.Displacement), (int)(transform.localPosition.z / BoardState.Displacement));
-        gameObject.SetActive(false);
+        ObjectPool.Instance.AddPiece(this);
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = _startPosition;
     }
 
     public virtual void Move(int _xPosition, int _yPosition)
     {
+        MoveTracker.Instance.AddMove((int)(transform.position.x / BoardState.Displacement), (int)(transform.position.y / BoardState.Displacement), 
+            _xPosition, _yPosition, GameManager.Instance.TurnCount);
         BoardState.Instance.SetField(this, _xPosition, _yPosition);
         Vector3 _position = transform.localPosition;
         _position.x = _xPosition * BoardState.Displacement;

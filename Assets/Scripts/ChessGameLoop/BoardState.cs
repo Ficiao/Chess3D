@@ -103,4 +103,16 @@ public class BoardState : MonoBehaviour
     {
         return GameEndCalculator.CheckIfGameEnd(grid);
     }
+
+    public void ResetPieces()
+    {
+        foreach (Transform child in _blackPieces.transform)
+        {
+            child.GetComponent<Piece>().ResetPosition();
+        }
+        foreach (Transform child in _whitePieces.transform)
+        {
+            child.GetComponent<Piece>().ResetPosition();
+        }
+    }
 }
