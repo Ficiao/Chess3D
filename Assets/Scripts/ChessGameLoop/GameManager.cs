@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private int _turnCount = 0;
     public int TurnCount { get => _turnCount; }
     private SideColor _turnPlayer;
-    public SideColor TurnPlayer { get => _turnPlayer; }
+    public SideColor TurnPlayer { get => _turnPlayer; set => _turnPlayer = value; }
     private SideColor _checkedSide;
     public SideColor CheckedSide { get => _checkedSide; set => _checkedSide = value == SideColor.Both ? _turnPlayer == SideColor.White ? SideColor.Black : SideColor.White : value; }
     private Pawn _passantable = null;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         {
             _turnPlayer = SideColor.Black;
         }
-        if (_turnPlayer == SideColor.Black)
+        else if (_turnPlayer == SideColor.Black)
         {
             _turnPlayer = SideColor.White;
         }

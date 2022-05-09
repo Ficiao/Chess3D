@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4976436487602841384}
   - component: {fileID: 4976436487602841385}
   - component: {fileID: 4976436487602841382}
+  - component: {fileID: 7820998623517639795}
   m_Layer: 0
   m_Name: White Rook
   m_TagString: Untagged
@@ -98,6 +99,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 695bd15b69d9eac408b599c22f9de55d, type: 3}
+--- !u!95 &7820998623517639795
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487602841381}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487615699328
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +131,7 @@ GameObject:
   - component: {fileID: 4976436487615699335}
   - component: {fileID: 4976436487615699332}
   - component: {fileID: 4976436487615699333}
+  - component: {fileID: 6651219884652035364}
   m_Layer: 0
   m_Name: Black Pawn (7)
   m_TagString: Untagged
@@ -196,6 +218,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &6651219884652035364
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487615699328}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487641180921
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +283,7 @@ GameObject:
   - component: {fileID: 4976436487647784866}
   - component: {fileID: 4976436487647784867}
   - component: {fileID: 4976436487647784864}
+  - component: {fileID: 3232113541674531158}
   m_Layer: 0
   m_Name: Black Pawn (6)
   m_TagString: Untagged
@@ -327,6 +370,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &3232113541674531158
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487647784895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487658722647
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +402,7 @@ GameObject:
   - component: {fileID: 4976436487658722650}
   - component: {fileID: 4976436487658722651}
   - component: {fileID: 4976436487658722648}
+  - component: {fileID: 7724481670403844491}
   m_Layer: 0
   m_Name: Black Pawn (2)
   m_TagString: Untagged
@@ -425,6 +489,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &7724481670403844491
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487658722647}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487746857443
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +568,7 @@ GameObject:
   - component: {fileID: 4976436487813862188}
   - component: {fileID: 4976436487813862189}
   - component: {fileID: 4976436487813862186}
+  - component: {fileID: 9180380327601974953}
   m_Layer: 0
   m_Name: White Pawn (3)
   m_TagString: Untagged
@@ -570,6 +655,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &9180380327601974953
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487813862185}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487839974727
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +687,7 @@ GameObject:
   - component: {fileID: 4976436487839974730}
   - component: {fileID: 4976436487839974731}
   - component: {fileID: 4976436487839974728}
+  - component: {fileID: 5670950325907987504}
   m_Layer: 0
   m_Name: White Pawn (1)
   m_TagString: Untagged
@@ -596,7 +702,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976436487839974727}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9, y: -0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -668,6 +774,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &5670950325907987504
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487839974727}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487882343603
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +806,7 @@ GameObject:
   - component: {fileID: 4976436487882343606}
   - component: {fileID: 4976436487882343607}
   - component: {fileID: 4976436487882343604}
+  - component: {fileID: 463324992403650730}
   m_Layer: 0
   m_Name: White Rook (1)
   m_TagString: Untagged
@@ -766,6 +893,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 695bd15b69d9eac408b599c22f9de55d, type: 3}
+--- !u!95 &463324992403650730
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487882343603}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436487891360071
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +925,7 @@ GameObject:
   - component: {fileID: 4976436487891360074}
   - component: {fileID: 4976436487891360075}
   - component: {fileID: 4976436487891360072}
+  - component: {fileID: 5760824337426382010}
   m_Layer: 0
   m_Name: White Pawn (5)
   m_TagString: Untagged
@@ -864,6 +1012,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &5760824337426382010
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436487891360071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488007087782
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,6 +1044,7 @@ GameObject:
   - component: {fileID: 4976436488007087789}
   - component: {fileID: 4976436488007087786}
   - component: {fileID: 4976436488007087787}
+  - component: {fileID: 2015524765689934688}
   m_Layer: 0
   m_Name: Black Queen
   m_TagString: Untagged
@@ -962,6 +1131,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 5d7a66b35fd81564380721b6bfcaaa47, type: 3}
+--- !u!95 &2015524765689934688
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488007087782}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488089891207
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1163,7 @@ GameObject:
   - component: {fileID: 4976436488089891210}
   - component: {fileID: 4976436488089891211}
   - component: {fileID: 4976436488089891208}
+  - component: {fileID: 357535173004514736}
   m_Layer: 0
   m_Name: Black Pawn (1)
   m_TagString: Untagged
@@ -1060,6 +1250,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &357535173004514736
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488089891207}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488120649161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,6 +1282,7 @@ GameObject:
   - component: {fileID: 4976436488120649164}
   - component: {fileID: 4976436488120649165}
   - component: {fileID: 4976436488120649162}
+  - component: {fileID: 2865632947733113492}
   m_Layer: 0
   m_Name: Black Rook
   m_TagString: Untagged
@@ -1158,6 +1369,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c61872173bf5220469786c549644854f, type: 3}
+--- !u!95 &2865632947733113492
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488120649161}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488128495570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1204,6 +1435,7 @@ GameObject:
   - component: {fileID: 4976436488282633255}
   - component: {fileID: 4976436488282633252}
   - component: {fileID: 4976436488282633253}
+  - component: {fileID: 4503224590749119899}
   m_Layer: 0
   m_Name: White Pawn (4)
   m_TagString: Untagged
@@ -1290,6 +1522,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &4503224590749119899
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488282633248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488289098386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,6 +1554,7 @@ GameObject:
   - component: {fileID: 4976436488289098393}
   - component: {fileID: 4976436488289098390}
   - component: {fileID: 4976436488289098391}
+  - component: {fileID: 9210273917026768504}
   m_Layer: 0
   m_Name: White Pawn (7)
   m_TagString: Untagged
@@ -1388,6 +1641,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &9210273917026768504
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488289098386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488291470691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1673,7 @@ GameObject:
   - component: {fileID: 4976436488291470694}
   - component: {fileID: 4976436488291470695}
   - component: {fileID: 4976436488291470692}
+  - component: {fileID: 429724520342211374}
   m_Layer: 0
   m_Name: White Knight
   m_TagString: Untagged
@@ -1486,6 +1760,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 69faab6ae9c00a848a82d036ac8c75d4, type: 3}
+--- !u!95 &429724520342211374
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488291470691}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488354090353
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1792,7 @@ GameObject:
   - component: {fileID: 4976436488354090356}
   - component: {fileID: 4976436488354090357}
   - component: {fileID: 4976436488354090354}
+  - component: {fileID: 2685753690413529006}
   m_Layer: 0
   m_Name: White Pawn
   m_TagString: Untagged
@@ -1584,6 +1879,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &2685753690413529006
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488354090353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b577880a079d5440a2abbd65e7f1ce4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488445225793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,6 +1911,7 @@ GameObject:
   - component: {fileID: 4976436488445225796}
   - component: {fileID: 4976436488445225797}
   - component: {fileID: 4976436488445225794}
+  - component: {fileID: 1001338716962467041}
   m_Layer: 0
   m_Name: Black Bishop
   m_TagString: Untagged
@@ -1682,6 +1998,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 66ad00b166b914e47acce78daea25aa6, type: 3}
+--- !u!95 &1001338716962467041
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488445225793}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488518405048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +2030,7 @@ GameObject:
   - component: {fileID: 4976436488518405055}
   - component: {fileID: 4976436488518405052}
   - component: {fileID: 4976436488518405053}
+  - component: {fileID: 1293171375036785995}
   m_Layer: 0
   m_Name: White Bishop
   m_TagString: Untagged
@@ -1780,6 +2117,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1e1130c2d0732f44eb82b057a9dcf58b, type: 3}
+--- !u!95 &1293171375036785995
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488518405048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488536898464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +2149,7 @@ GameObject:
   - component: {fileID: 4976436488536898471}
   - component: {fileID: 4976436488536898468}
   - component: {fileID: 4976436488536898469}
+  - component: {fileID: 731888245404962965}
   m_Layer: 0
   m_Name: White Pawn (6)
   m_TagString: Untagged
@@ -1878,6 +2236,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &731888245404962965
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488536898464}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488560348569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +2268,7 @@ GameObject:
   - component: {fileID: 4976436488560348572}
   - component: {fileID: 4976436488560348573}
   - component: {fileID: 4976436488560348570}
+  - component: {fileID: 323056790043544254}
   m_Layer: 0
   m_Name: Black Knight
   m_TagString: Untagged
@@ -1976,6 +2355,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 639050e749c3ce444a196d84e803b067, type: 3}
+--- !u!95 &323056790043544254
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488560348569}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488675290637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +2387,7 @@ GameObject:
   - component: {fileID: 4976436488675290672}
   - component: {fileID: 4976436488675290673}
   - component: {fileID: 4976436488675290638}
+  - component: {fileID: 4481190077047736048}
   m_Layer: 0
   m_Name: White Bishop (1)
   m_TagString: Untagged
@@ -2074,6 +2474,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 1e1130c2d0732f44eb82b057a9dcf58b, type: 3}
+--- !u!95 &4481190077047736048
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488675290637}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488808829414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2506,7 @@ GameObject:
   - component: {fileID: 4976436488808829421}
   - component: {fileID: 4976436488808829418}
   - component: {fileID: 4976436488808829419}
+  - component: {fileID: 7754814501749875054}
   m_Layer: 0
   m_Name: White Queen
   m_TagString: Untagged
@@ -2172,6 +2593,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 3d88c9550087ec84c95090f5be583f60, type: 3}
+--- !u!95 &7754814501749875054
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488808829414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436488853193069
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,6 +2625,7 @@ GameObject:
   - component: {fileID: 4976436488853193104}
   - component: {fileID: 4976436488853193105}
   - component: {fileID: 4976436488853193070}
+  - component: {fileID: 7482069019638806063}
   m_Layer: 0
   m_Name: Black Pawn (4)
   m_TagString: Untagged
@@ -2270,6 +2712,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &7482069019638806063
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436488853193069}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489060130122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,6 +2744,7 @@ GameObject:
   - component: {fileID: 4976436489060130161}
   - component: {fileID: 4976436489060130126}
   - component: {fileID: 4976436489060130127}
+  - component: {fileID: 8918770290717696289}
   m_Layer: 0
   m_Name: Black Bishop (1)
   m_TagString: Untagged
@@ -2368,6 +2831,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 66ad00b166b914e47acce78daea25aa6, type: 3}
+--- !u!95 &8918770290717696289
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489060130122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489063632002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2863,7 @@ GameObject:
   - component: {fileID: 4976436489063632009}
   - component: {fileID: 4976436489063632006}
   - component: {fileID: 4976436489063632007}
+  - component: {fileID: 5305337653395770821}
   m_Layer: 0
   m_Name: Black Pawn
   m_TagString: Untagged
@@ -2466,6 +2950,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &5305337653395770821
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489063632002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489108504222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2982,7 @@ GameObject:
   - component: {fileID: 4976436489108504197}
   - component: {fileID: 4976436489108504194}
   - component: {fileID: 4976436489108504195}
+  - component: {fileID: 3394368379602749074}
   m_Layer: 0
   m_Name: Black King
   m_TagString: Untagged
@@ -2564,6 +3069,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300002, guid: a1edea9a41e71514f94a737abaf1410c, type: 3}
+--- !u!95 &3394368379602749074
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489108504222}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489122403619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,6 +3148,7 @@ GameObject:
   - component: {fileID: 4976436489152811752}
   - component: {fileID: 4976436489152811753}
   - component: {fileID: 4976436489152811750}
+  - component: {fileID: 7403370396586658389}
   m_Layer: 0
   m_Name: Black Pawn (3)
   m_TagString: Untagged
@@ -2709,6 +3235,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &7403370396586658389
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489152811749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489200458595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +3267,7 @@ GameObject:
   - component: {fileID: 4976436489200458598}
   - component: {fileID: 4976436489200458599}
   - component: {fileID: 4976436489200458596}
+  - component: {fileID: 4304666005457545097}
   m_Layer: 0
   m_Name: White King
   m_TagString: Untagged
@@ -2807,6 +3354,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 763435837405bc24691af77936be360b, type: 3}
+--- !u!95 &4304666005457545097
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489200458595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489227073628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +3386,7 @@ GameObject:
   - component: {fileID: 4976436489227073603}
   - component: {fileID: 4976436489227073600}
   - component: {fileID: 4976436489227073601}
+  - component: {fileID: 5050073066832337537}
   m_Layer: 0
   m_Name: Black Knight (1)
   m_TagString: Untagged
@@ -2905,6 +3473,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 639050e749c3ce444a196d84e803b067, type: 3}
+--- !u!95 &5050073066832337537
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489227073628}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489231139617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,6 +3505,7 @@ GameObject:
   - component: {fileID: 4976436489231139620}
   - component: {fileID: 4976436489231139621}
   - component: {fileID: 4976436489231139618}
+  - component: {fileID: 3613418605545602650}
   m_Layer: 0
   m_Name: White Pawn (2)
   m_TagString: Untagged
@@ -3003,6 +3592,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 6730016ba0e329c499d89e81bd550346, type: 3}
+--- !u!95 &3613418605545602650
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489231139617}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489232941252
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,6 +3624,7 @@ GameObject:
   - component: {fileID: 4976436489232941259}
   - component: {fileID: 4976436489232941256}
   - component: {fileID: 4976436489232941257}
+  - component: {fileID: 3328668666529689}
   m_Layer: 0
   m_Name: White Knight (1)
   m_TagString: Untagged
@@ -3101,6 +3711,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 69faab6ae9c00a848a82d036ac8c75d4, type: 3}
+--- !u!95 &3328668666529689
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489232941252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489441558497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3113,6 +3743,7 @@ GameObject:
   - component: {fileID: 4976436489441558500}
   - component: {fileID: 4976436489441558501}
   - component: {fileID: 4976436489441558498}
+  - component: {fileID: 4779298587770848916}
   m_Layer: 0
   m_Name: Black Rook (1)
   m_TagString: Untagged
@@ -3199,6 +3830,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c61872173bf5220469786c549644854f, type: 3}
+--- !u!95 &4779298587770848916
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489441558497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489521986265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3211,6 +3862,7 @@ GameObject:
   - component: {fileID: 4976436489521986268}
   - component: {fileID: 4976436489521986269}
   - component: {fileID: 4976436489521986266}
+  - component: {fileID: 1805886159083103579}
   m_Layer: 0
   m_Name: Black Pawn (5)
   m_TagString: Untagged
@@ -3297,6 +3949,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8fbcce33444d4ce4db5b61f8d0eeb7aa, type: 3}
+--- !u!95 &1805886159083103579
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976436489521986265}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4976436489633430118
 GameObject:
   m_ObjectHideFlags: 0

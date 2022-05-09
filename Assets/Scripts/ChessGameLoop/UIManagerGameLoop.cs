@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,6 +42,10 @@ public class UIManagerGameLoop : MonoBehaviour
     private Knight _whiteKnight;
     [SerializeField]
     private Knight _blackKnight;
+    [SerializeField]
+    private List<TMP_Text> _saves;
+    [SerializeField]
+    private GameObject _filesMenu;
     private SideColor _pawnColor = SideColor.None;
 
     private static UIManagerGameLoop _instance;
@@ -65,6 +70,14 @@ public class UIManagerGameLoop : MonoBehaviour
             _sound.volume = _settings.SoundLevels;
         }
         _volumeSlider.value = _settings.SoundLevels;
+
+        for (int i = 0; i < _saves.Count; i++)
+        {
+            if (File.Exists(Application.dataPath + "/Saves/save" + (i + 1) + ".txt") == false)
+            {
+                _saves[i].SetText("Empty");
+            }
+        }
     }
 
     public void Pause()
@@ -87,14 +100,9 @@ public class UIManagerGameLoop : MonoBehaviour
         _settingsMenu.SetActive(false);
     }
 
-    public void Save()
-    {
-
-    }
-
     public void ReturnFromSave()
     {
-
+        _filesMenu.SetActive(false);
     }
 
     public void VolumeChanged()
@@ -117,7 +125,7 @@ public class UIManagerGameLoop : MonoBehaviour
     {
         _pauseButton.SetActive(false);
         _gameOverMenu.SetActive(true);
-        if(_winner == SideColor.Both ||  _winner == SideColor.None)
+        if(_winner == SideColor.Both)
         {
             _winnerText.SetText("DRAW");
         }
@@ -197,5 +205,38 @@ public class UIManagerGameLoop : MonoBehaviour
         }
         _pawnColor = SideColor.None;
         _pawnPromotionMenu.SetActive(false);
+    }
+
+    public void SaveGame()
+    {
+        _filesMenu.SetActive(true);        
+    }
+
+    public void Save1()
+    {
+        MoveTracker.Instance.SaveGame(0);
+        _filesMenu.SetActive(false);
+        _saves[0].SetText("SAVE 1");
+    }
+
+    public void Save2()
+    {
+        MoveTracker.Instance.SaveGame(1);
+        _filesMenu.SetActive(false);
+        _saves[1].SetText("SAVE 2");
+    }
+
+    public void Save3()
+    {
+        MoveTracker.Instance.SaveGame(2);
+        _filesMenu.SetActive(false);
+        _saves[2].SetText("SAVE 3");
+    }
+
+    public void Save4()
+    {
+        MoveTracker.Instance.SaveGame(3);
+        _filesMenu.SetActive(false);
+        _saves[3].SetText("SAVE 4");
     }
 }
