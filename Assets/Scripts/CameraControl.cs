@@ -15,66 +15,57 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private float _fastZoomSensitivity = 50f;
     [SerializeField]
-    private float panSensitivity = 0.3f;
-    //private bool looking = false;
-    private Rigidbody _rigidbody;
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+    private float _panSensitivity = 0.3f;
 
     void Update()
     {
-/*        _rigidbody.velocity = Vector3.zero;
-        _rigidbody.angularVelocity = Vector3.zero;*/
 
-        var fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-        var movementSpeed = fastMode ? this._fastMovementSpeed : this._movementSpeed;
+        var _fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        var _movementSpeed = _fastMode ? _fastMovementSpeed : this._movementSpeed;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
         {
-            transform.position = transform.position + (-transform.right * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (-transform.right * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.position = transform.position + (Vector3.up * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (Vector3.up * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            transform.position = transform.position + (transform.right * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (transform.right * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            transform.position = transform.position + (transform.forward * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (transform.forward * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            transform.position = transform.position + (-transform.forward * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (-transform.forward * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.position = transform.position + (transform.up * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (transform.up * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            transform.position = transform.position + (-transform.up * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (-transform.up * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.R) || Input.GetKey(KeyCode.PageUp))
         {
-            transform.position = transform.position + (Vector3.up * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (Vector3.up * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.PageDown))
         {
-            transform.position = transform.position + (-Vector3.up * movementSpeed * Time.deltaTime);
+            transform.position = TryToMove(transform.position, (-Vector3.up * _movementSpeed * Time.deltaTime));
         }
 
         if (Input.GetKey(KeyCode.Mouse1))
@@ -86,38 +77,37 @@ public class CameraControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse2))
         {
-            transform.position = transform.position + (- transform.right * Input.GetAxis("Mouse X") * panSensitivity);
-            transform.position = transform.position + (- transform.up * Input.GetAxis("Mouse Y") * panSensitivity);
+            transform.position = TryToMove(transform.position, (- transform.right * Input.GetAxis("Mouse X") * _panSensitivity));
+            transform.position = TryToMove(transform.position, (- transform.up * Input.GetAxis("Mouse Y") * _panSensitivity));
         }
 
         float axis = Input.GetAxis("Mouse ScrollWheel");
         if (axis != 0)
         {
-            var zoomSensitivity = fastMode ? this._fastZoomSensitivity : this._zoomSensitivity;
-            transform.position = transform.position + transform.forward * axis * zoomSensitivity;
-        }
+            var zoomSensitivity = _fastMode ? this._fastZoomSensitivity : this._zoomSensitivity;
+            transform.position = TryToMove(transform.position, transform.forward * axis * zoomSensitivity);
+        }       
 
-/*        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            StartLooking();
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            StopLooking();
-        }*/
     }
 
-/*    public void StartLooking()
+    private Vector3 TryToMove(Vector3 _position, Vector3 _offset)
     {
-        looking = true;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if ((_position + _offset).x < 35f && (_position + _offset).x > -35f)
+        {
+            _position.x += _offset.x;
+        }
+
+        if ((_position + _offset).z < 35f && (_position + _offset).z > -35)
+        {
+            _position.z += _offset.z;
+        }
+
+        if ((_position + _offset).y < 35f && (_position + _offset).y > 2f)
+        {
+            _position.y += _offset.y;
+        }
+
+        return _position;
     }
 
-    public void StopLooking()
-    {
-        looking = false;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-    }*/
 }
