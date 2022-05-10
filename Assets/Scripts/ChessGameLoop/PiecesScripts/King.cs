@@ -22,8 +22,8 @@ public class King : Piece
 
     public override void CreatePath()
     {
-        int _xPosition = (int)(transform.localPosition.x / BoardState.Displacement);
-        int _yPosition = (int)(transform.localPosition.z / BoardState.Displacement);
+        int _xPosition = (int)(transform.localPosition.x / BoardState.Offset);
+        int _yPosition = (int)(transform.localPosition.z / BoardState.Offset);
 
         bool _allowed;
         for (int i = 0; i < LookupMoves.GetLength(0); i++)

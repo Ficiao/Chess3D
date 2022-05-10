@@ -13,7 +13,7 @@ public class BoardState : MonoBehaviour
     private GameObject _blackPieces;
     [SerializeField]
     private GameObject _whitePieces;
-    public static float Displacement = 1.5f;
+    public static float Offset = 1.5f;
 
     private static BoardState _instance;
     public static BoardState Instance { get => _instance; }
@@ -50,14 +50,14 @@ public class BoardState : MonoBehaviour
 
         foreach (Transform child in _blackPieces.transform)
         {
-            int x = (int)(child.localPosition.x / Displacement);
-            int y = (int)(child.localPosition.z / Displacement);
+            int x = (int)(child.localPosition.x / Offset);
+            int y = (int)(child.localPosition.z / Offset);
             grid[x, y] = child.GetComponent<Piece>();
         }
         foreach (Transform child in _whitePieces.transform)
         {
-            int x = (int)(child.localPosition.x / Displacement);
-            int y = (int)(child.localPosition.z / Displacement);
+            int x = (int)(child.localPosition.x / Offset);
+            int y = (int)(child.localPosition.z / Offset);
             grid[x, y] = child.GetComponent<Piece>();
         }
     }
@@ -77,7 +77,7 @@ public class BoardState : MonoBehaviour
 
     public void SetField(Piece _piece, int _widthNew, int _lengthNew)
     {
-        grid[(int)(_piece.transform.localPosition.x/ BoardState.Displacement), (int)(_piece.transform.localPosition.z / BoardState.Displacement)] = null;
+        grid[(int)(_piece.transform.localPosition.x/ BoardState.Offset), (int)(_piece.transform.localPosition.z / BoardState.Offset)] = null;
         grid[_widthNew, _lengthNew] = _piece;
     }
 
@@ -159,8 +159,8 @@ public class BoardState : MonoBehaviour
 
     public void PromotePawn(Pawn _promotingPawn, Piece _piece)
     {
-        int x = (int)(_promotingPawn.transform.localPosition.x / Displacement);
-        int y = (int)(_promotingPawn.transform.localPosition.z / Displacement);
+        int x = (int)(_promotingPawn.transform.localPosition.x / Offset);
+        int y = (int)(_promotingPawn.transform.localPosition.z / Offset);
 
         grid[x, y] = _piece;
         _piece.WasPawn = _promotingPawn;
