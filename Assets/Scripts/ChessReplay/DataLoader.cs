@@ -7,19 +7,19 @@ public static class DataLoader
 {
     private static string[] _files =
     {
-        "/Saves/save1.txt",
-        "/Saves/save2.txt",
-        "/Saves/save3.txt",
-        "/Saves/save4.txt"
+        "/save1.txt",
+        "/save2.txt",
+        "/save3.txt",
+        "/save4.txt"
     };
 
     public static List<List<Vector2>> LoadData(int _fileIndex)
     {
         List<List<Vector2>> _moves = new List<List<Vector2>>();
 
-        if (File.Exists(Application.dataPath + _files[_fileIndex]))
+        if (File.Exists(Application.persistentDataPath + _files[_fileIndex]))
         {
-            string[] _json = File.ReadAllText(Application.dataPath + _files[_fileIndex]).Split("\n");
+            string[] _json = File.ReadAllText(Application.persistentDataPath + _files[_fileIndex]).Split("\n");
             Serializator _moveInstance;
 
             foreach (string _turn in _json)
