@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 public class AnimationManager : MonoBehaviour
 {
     [SerializeField]
-    private AnimatorController _whiteAnimator;
+    private RuntimeAnimatorController _whiteAnimator;
     [SerializeField]
-    private AnimatorController _blackAnimator;
+    private RuntimeAnimatorController _blackAnimator;
     [SerializeField]
-    private AnimatorController _whiteKnightAnimator;
+    private RuntimeAnimatorController _whiteKnightAnimator;
     [SerializeField]
-    private AnimatorController _blackKnightAnimator;
+    private RuntimeAnimatorController _blackKnightAnimator;
     [SerializeField]
-    private AnimatorController _whiteBishopAnimator;
+    private RuntimeAnimatorController _whiteBishopAnimator;
     [SerializeField]
-    private AnimatorController _blackBishopAnimator;
+    private RuntimeAnimatorController _blackBishopAnimator;
     [SerializeField]
     private float _moveSpeed = 20f;
     [SerializeField]
@@ -39,7 +38,7 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    public AnimatorController Assign(Piece _piece)
+    public RuntimeAnimatorController Assign(Piece _piece)
     {
         if (_piece.PieceColor == SideColor.White)
         {
