@@ -68,7 +68,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1f0bb4774741c1b4c909ccd53e6c2147, type: 2}
+  m_Motion: {fileID: 7400000, guid: 382c3ecb7e49f854ea4afac2b5404270, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -95,7 +95,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ba83f189dbc05ca4aa60cd4d76b443cf, type: 2}
+  m_Motion: {fileID: 7400000, guid: d72f0040dd0f3164780eec7256630a0d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -132,7 +132,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlackAnimator
+  m_Name: BlackKnightAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: State

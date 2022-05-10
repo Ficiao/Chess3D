@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public delegate void Selected(Piece self);
@@ -29,6 +30,8 @@ public abstract class Piece : MonoBehaviour
     public PathPiece AssignedAsCastle { get => _assignedAsCastle; set { _assignedAsCastle = value; _renderer.material.color = _startColor; } }
     private Pawn _wasPawn = null;
     public Pawn WasPawn { get => _wasPawn; set => _wasPawn = value; }
+    private Animator _animator;
+    public Animator Animator { get => _animator; }
 
     public static event Selected Selected;
 
@@ -38,6 +41,7 @@ public abstract class Piece : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<Animator>().runtimeAnimatorController = AnimationManager.Instance.Assign(this);
         _startPosition = transform.position;
         _renderer = GetComponent<Renderer>();
         _startColor = _renderer.material.color;
@@ -80,7 +84,7 @@ public abstract class Piece : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if ((_active == false && GameManager.Instance.TurnPlayer == _pieceColor) || _assignedAsEnemy || _assignedAsCastle)
+        if ((_active == false) || _assignedAsEnemy || _assignedAsCastle)
         {
             _renderer.material.color = _startColor;
         }
@@ -89,7 +93,10 @@ public abstract class Piece : MonoBehaviour
 
     public void Die()
     {
-        BoardState.Instance.ClearField((int)(transform.localPosition.x / BoardState.Displacement), (int)(transform.localPosition.z / BoardState.Displacement));
+        if (BoardState.Instance.GetField((int)(transform.localPosition.x / BoardState.Offset), (int)(transform.localPosition.z / BoardState.Offset)) == this)
+        {
+            BoardState.Instance.ClearField((int)(transform.localPosition.x / BoardState.Offset), (int)(transform.localPosition.z / BoardState.Offset));
+        }
         ObjectPool.Instance.AddPiece(this);
     }
 
@@ -100,8 +107,8 @@ public abstract class Piece : MonoBehaviour
 
     public virtual void Move(int _xPosition, int _yPosition)
     {
-        int _xSelf = (int)(transform.localPosition.x / BoardState.Displacement);
-        int _ySelf = (int)(transform.localPosition.z / BoardState.Displacement);
+        int _xSelf = (int)(transform.localPosition.x / BoardState.Offset);
+        int _ySelf = (int)(transform.localPosition.z / BoardState.Offset);
 
         MoveTracker.Instance.AddMove(_xSelf, _ySelf, _xPosition, _yPosition, GameManager.Instance.TurnCount);
 
@@ -109,9 +116,9 @@ public abstract class Piece : MonoBehaviour
         {
             int _direction = PieceColor == SideColor.Black ? 1 : -1;
 
-            if (_yPosition * BoardState.Displacement == GameManager.Instance.Passantable.transform.localPosition.z)
+            if (_yPosition * BoardState.Offset == GameManager.Instance.Passantable.transform.localPosition.z)
             {
-                if (_xSelf * BoardState.Displacement == GameManager.Instance.Passantable.transform.localPosition.x
+                if (_xSelf * BoardState.Offset == GameManager.Instance.Passantable.transform.localPosition.x
                     && _xSelf!= _xPosition)
                 {
                     MoveTracker.Instance.AddMove(_xPosition - _direction, _yPosition, -1, -1, GameManager.Instance.TurnCount);
@@ -120,11 +127,7 @@ public abstract class Piece : MonoBehaviour
         }
 
         BoardState.Instance.SetField(this, _xPosition, _yPosition);
-        Vector3 _position = transform.localPosition;
-        _position.x = _xPosition * BoardState.Displacement;
-        _position.z = _yPosition * BoardState.Displacement;
-        _position.y = 0;
-        transform.localPosition = _position;
+
         _hasMoved = true;
         GameManager.Instance.Passantable = null;
     }

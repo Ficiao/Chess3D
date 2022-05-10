@@ -6,8 +6,8 @@ public class Pawn : Piece
 {
     public override void CreatePath()
     {
-        int _xSource = (int)(transform.localPosition.x / BoardState.Displacement);
-        int _ySource = (int)(transform.localPosition.z / BoardState.Displacement);
+        int _xSource = (int)(transform.localPosition.x / BoardState.Offset);
+        int _ySource = (int)(transform.localPosition.z / BoardState.Offset);
 
         int _direction = PieceColor == SideColor.Black ? 1 : -1;
 
@@ -71,7 +71,7 @@ public class Pawn : Piece
 
     public override void Move(int _xPosition, int _yPosition)
     {
-        int _xPiece = (int)(transform.localPosition.x / BoardState.Displacement);
+        int _xPiece = (int)(transform.localPosition.x / BoardState.Offset);
         base.Move(_xPosition, _yPosition);
 
 

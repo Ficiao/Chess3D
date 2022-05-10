@@ -68,7 +68,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 1f0bb4774741c1b4c909ccd53e6c2147, type: 2}
+  m_Motion: {fileID: 7400000, guid: 513bfd0a16a8df04186d3be1ff913d26, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -95,7 +95,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ba83f189dbc05ca4aa60cd4d76b443cf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0a7e25a3a5684fc40b180529363e9e5a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -132,7 +132,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlackAnimator
+  m_Name: WhiteBishopAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: State

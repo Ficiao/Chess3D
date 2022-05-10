@@ -36,8 +36,8 @@ public static class PathCalculator
         Vector3 _position = new Vector3();
         Piece _piece;
 
-        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Displacement);
-        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
+        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Offset);
+        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Offset);
 
         for (int j = 0; j < DiagonalLookup.GetLength(0); j++)
         {
@@ -54,8 +54,8 @@ public static class PathCalculator
                     }
 
                     _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                    _position.x = _caller.transform.localPosition.x + i * BoardState.Displacement * _lookupTable[j, 0];
-                    _position.z = _caller.transform.localPosition.z + i * BoardState.Displacement * _lookupTable[j, 1];
+                    _position.x = _caller.transform.localPosition.x + i * BoardState.Offset * _lookupTable[j, 0];
+                    _position.z = _caller.transform.localPosition.z + i * BoardState.Offset * _lookupTable[j, 1];
                     _position.y = _path.transform.localPosition.y;
 
                     _path.transform.localPosition = _position;
@@ -69,8 +69,8 @@ public static class PathCalculator
 
                     _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
                     _path.GetComponent<PathPiece>().AssignPiece(_piece);
-                    _position.x = _caller.transform.localPosition.x + i * BoardState.Displacement * _lookupTable[j, 0];
-                    _position.z = _caller.transform.localPosition.z + i * BoardState.Displacement * _lookupTable[j, 1];
+                    _position.x = _caller.transform.localPosition.x + i * BoardState.Offset * _lookupTable[j, 0];
+                    _position.z = _caller.transform.localPosition.z + i * BoardState.Offset * _lookupTable[j, 1];
                     _position.y = _path.transform.localPosition.y;
 
                     _path.transform.localPosition = _position;
@@ -89,8 +89,8 @@ public static class PathCalculator
         GameObject _path;
         Vector3 _position = new Vector3();
 
-        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Displacement);
-        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
+        int _xSource = (int)(_caller.transform.localPosition.x / BoardState.Offset);
+        int _ySource = (int)(_caller.transform.localPosition.z / BoardState.Offset);
 
         if (BoardState.Instance.IsInBorders(_xSource + _xDirection, _ySource + _yDirection))
         {
@@ -104,8 +104,8 @@ public static class PathCalculator
                     return;
                 }
                 _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow");
-                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Displacement;
-                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Displacement;
+                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Offset;
+                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Offset;
                 _position.y = _path.transform.localPosition.y;
 
                 _path.transform.localPosition = _position;
@@ -118,8 +118,8 @@ public static class PathCalculator
                 }
                 _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
                 _path.GetComponent<PathPiece>().AssignPiece(_piece);
-                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Displacement;
-                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Displacement;
+                _position.x = _caller.transform.localPosition.x + _xDirection * BoardState.Offset;
+                _position.z = _caller.transform.localPosition.z + _yDirection * BoardState.Offset;
                 _position.y = _path.transform.localPosition.y;
 
                 _path.transform.localPosition = _position;
@@ -135,8 +135,8 @@ public static class PathCalculator
 
         _path = ObjectPool.Instance.GetHighlightPath("HighlightPathRed");
         _path.GetComponent<PathPiece>().AssignPiece(_target);
-        _position.x = _xPosition * BoardState.Displacement; 
-        _position.z = _yPosition * BoardState.Displacement; 
+        _position.x = _xPosition * BoardState.Offset; 
+        _position.z = _yPosition * BoardState.Offset; 
         _position.y = _path.transform.localPosition.y;
 
         _path.transform.localPosition = _position;
@@ -149,10 +149,10 @@ public static class PathCalculator
             return;
         }
 
-        int _xCaller = (int)(_caller.transform.localPosition.x / BoardState.Displacement);
-        int _yCaller = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
-        int _xTarget = (int)(_target.transform.localPosition.x / BoardState.Displacement);
-        int _yTarget = (int)(_target.transform.localPosition.z / BoardState.Displacement);
+        int _xCaller = (int)(_caller.transform.localPosition.x / BoardState.Offset);
+        int _yCaller = (int)(_caller.transform.localPosition.z / BoardState.Offset);
+        int _xTarget = (int)(_target.transform.localPosition.x / BoardState.Offset);
+        int _yTarget = (int)(_target.transform.localPosition.z / BoardState.Offset);
 
         _yCaller+= _yTarget > _yCaller ? 1 : -1;
         while (_yCaller != _yTarget)
@@ -164,7 +164,7 @@ public static class PathCalculator
             _yCaller += _yTarget > _yCaller ? 1 : -1;
         }
 
-        _yCaller = (int)(_caller.transform.localPosition.z / BoardState.Displacement);
+        _yCaller = (int)(_caller.transform.localPosition.z / BoardState.Offset);
         int _yMedian = (int)Mathf.Ceil((_yCaller + _yTarget) / 2f);
 
         if(BoardState.Instance.CalculateCheckState(_xCaller, _yCaller, _xCaller, _yMedian) == _caller.PieceColor && _caller is King)
@@ -179,8 +179,8 @@ public static class PathCalculator
         Vector3 _position = new Vector3();
         PathPiece _path = ObjectPool.Instance.GetHighlightPath("HighlightPathYellow").GetComponent<PathPiece>();
         _path.AssignCastle(_target);
-        _position.x = _xTarget * BoardState.Displacement;
-        _position.z = _yTarget * BoardState.Displacement;
+        _position.x = _xTarget * BoardState.Offset;
+        _position.z = _yTarget * BoardState.Offset;
         _position.y = _path.transform.localPosition.y;
 
         _path.transform.localPosition = _position;

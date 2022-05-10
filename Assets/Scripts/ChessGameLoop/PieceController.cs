@@ -8,8 +8,6 @@ public class PieceController : MonoBehaviour
     public bool AnyActive { get => _activePiece != null; }
     [SerializeField]
     private Camera _camera;
-    [SerializeField]
-    private AudioSource _moveSound;
 
     public static event PieceMoved PieceMoved;
 
@@ -46,10 +44,9 @@ public class PieceController : MonoBehaviour
             }
         }
 
-        _activePiece.Active = false;
         PieceMoved?.Invoke();
+        _activePiece.Active = false;
         _activePiece = null;
-
 
     }
 
@@ -68,20 +65,37 @@ public class PieceController : MonoBehaviour
 
     private void PathSelected(PathPiece _path)
     {
-        int _xPiece = (int)(_activePiece.transform.localPosition.x / BoardState.Displacement);
-        int _yPiece = (int)(_activePiece.transform.localPosition.z / BoardState.Displacement);
-        int _xPath = (int)(_path.transform.localPosition.x / BoardState.Displacement);
-        int _yPath = (int)(_path.transform.localPosition.z / BoardState.Displacement);
+        Piece _assignedEnemy = _path.AssignedPiece;
+        Piece _assignedCastle = _path.AssignedCastle;
+        PieceMoved?.Invoke();
+        StartCoroutine(PieceMover(_path, _assignedEnemy, _assignedCastle));
+        _activePiece.Active = false;
+    }
 
-        if (_path.AssignedCastle == false)
+    private IEnumerator PieceMover(PathPiece _path, Piece _assignedEnemy, Piece _assignedCastle)
+    {
+        int _xPiece = (int)(_activePiece.transform.localPosition.x / BoardState.Offset);
+        int _yPiece = (int)(_activePiece.transform.localPosition.z / BoardState.Offset);
+        int _xPath = (int)(_path.transform.localPosition.x / BoardState.Offset);
+        int _yPath = (int)(_path.transform.localPosition.z / BoardState.Offset);
+
+        Vector3 _targetPosition=new Vector3();
+
+        if (_assignedCastle == false)
         {
             SideColor _checked = BoardState.Instance.CalculateCheckState(_xPiece, _yPiece, _xPath, _yPath);
             GameManager.Instance.CheckedSide = _checked;
-            if (_path.AssignedPiece != null)
-            {
-                _path.AssignedPiece.Die();
-            }
+
             _activePiece.Move(_xPath, _yPath);
+
+            _targetPosition.x = _xPath * BoardState.Offset;
+            _targetPosition.y = _activePiece.transform.localPosition.y;
+            _targetPosition.z = _yPath * BoardState.Offset;
+            AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, _assignedEnemy);
+            while (AnimationManager.Instance.Active == true)
+            {
+                yield return new WaitForSeconds(0.01f);
+            }
         }
         else
         {
@@ -91,25 +105,59 @@ public class PieceController : MonoBehaviour
             if (_activePiece is King)
             {
                 _activePiece.Move(_xPath, _yMedian);
+                _targetPosition.x = _xPath * BoardState.Offset;
+                _targetPosition.y = _activePiece.transform.localPosition.y;
+                _targetPosition.z = _yMedian * BoardState.Offset;
+                AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, null);
+                while (AnimationManager.Instance.Active == true)
+                {
+                    yield return new WaitForSeconds(0.01f);
+                }
+
                 _checked = BoardState.Instance.CalculateCheckState(_xPath, _yPath, _xPath, _yMedian > _yPiece ? _yMedian - 1 : _yMedian + 1);
-                _path.AssignedCastle.Move(_xPath, _yMedian > _yPiece ? _yMedian - 1 : _yMedian + 1);
+
+                _assignedCastle.Move(_xPath, _yMedian > _yPiece ? _yMedian - 1 : _yMedian + 1);
+                _targetPosition.x = _xPath * BoardState.Offset;
+                _targetPosition.y = _activePiece.transform.localPosition.y;
+                _targetPosition.z = (_yMedian > _yPiece ? _yMedian - 1 : _yMedian + 1) * BoardState.Offset;
+                AnimationManager.Instance.MovePiece(_assignedCastle, _targetPosition, null);
+                while (AnimationManager.Instance.Active == true)
+                {
+                    yield return new WaitForSeconds(0.01f);
+                }
+
             }
             else
             {
                 _activePiece.Move(_xPath, _yMedian > _yPiece ? _yMedian + 1 : _yMedian - 1);
+                _targetPosition.x = _xPath * BoardState.Offset;
+                _targetPosition.y = _activePiece.transform.localPosition.y;
+                _targetPosition.z = (_yMedian > _yPiece ? _yMedian + 1 : _yMedian - 1) * BoardState.Offset;
+                AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, null);
+                while (AnimationManager.Instance.Active == true)
+                {
+                    yield return new WaitForSeconds(0.01f);
+                }
+
                 _checked = BoardState.Instance.CalculateCheckState(_xPath, _yPath, _xPath, _yMedian);
-                _path.AssignedCastle.Move(_xPath, _yMedian);
+                _assignedCastle.Move(_xPath, _yMedian);
+
+                _targetPosition.x = _xPath * BoardState.Offset;
+                _targetPosition.y = _activePiece.transform.localPosition.y;
+                _targetPosition.z = _yMedian * BoardState.Offset;
+                AnimationManager.Instance.MovePiece(_assignedCastle, _targetPosition, null);
+                while (AnimationManager.Instance.Active == true)
+                {
+                    yield return new WaitForSeconds(0.01f);
+                }
             }
 
             GameManager.Instance.CheckedSide = _checked;
             _path.AssignedCastle.AssignedAsCastle = null;
             GameManager.Instance.Passantable = null;
         }
-        _activePiece.Active = false;
         _activePiece = null;
-        PieceMoved?.Invoke();
         GameManager.Instance.ChangeTurn();
-        _moveSound.Play();
     }
 
     private void PieceSelected(Piece _piece)
