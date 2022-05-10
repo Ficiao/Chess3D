@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2380346}
   - component: {fileID: 6484090}
   - component: {fileID: 549421885230085304}
+  - component: {fileID: -3370027592878594658}
   m_Layer: 0
   m_Name: White Bishop
   m_TagString: Untagged
@@ -111,3 +112,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd49f6721eacaec4ab70c782dd5018a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pieceColor: 0
+--- !u!95 &-3370027592878594658
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190264}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

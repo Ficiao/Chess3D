@@ -103,6 +103,7 @@ public abstract class Piece : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = _startPosition;
+        _renderer.material.color = _startColor;
     }
 
     public virtual void Move(int _xPosition, int _yPosition)
