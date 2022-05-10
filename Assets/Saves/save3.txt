@@ -1,5 +1,0 @@
-
-{"MoveList":[{"x":6.0,"y":5.0},{"x":4.0,"y":5.0}],"TurnOrder":0}
-{"MoveList":[{"x":1.0,"y":4.0},{"x":3.0,"y":4.0}],"TurnOrder":1}
-{"MoveList":[{"x":6.0,"y":6.0},{"x":4.0,"y":6.0}],"TurnOrder":2}
-{"MoveList":[{"x":0.0,"y":3.0},{"x":4.0,"y":7.0}],"TurnOrder":3}

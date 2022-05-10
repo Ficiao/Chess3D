@@ -55,7 +55,7 @@ public class UIManagerReplay : MonoBehaviour
 
         for(int i = 0; i < _saves.Count; i++)
         {
-            if (File.Exists(Application.dataPath + "/Saves/save" + (i + 1) + ".txt") == false){
+            if (File.Exists(Application.persistentDataPath + "/save" + (i + 1) + ".txt") == false){
                 _saves[i].SetText("Empty");
             }
         }

@@ -73,7 +73,7 @@ public class UIManagerGameLoop : MonoBehaviour
 
         for (int i = 0; i < _saves.Count; i++)
         {
-            if (File.Exists(Application.dataPath + "/Saves/save" + (i + 1) + ".txt") == false)
+            if (File.Exists(Application.persistentDataPath + "/save" + (i + 1) + ".txt") == false)
             {
                 _saves[i].SetText("Empty");
             }
@@ -103,6 +103,7 @@ public class UIManagerGameLoop : MonoBehaviour
     public void ReturnFromSave()
     {
         _filesMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
     }
 
     public void VolumeChanged()
@@ -209,13 +210,15 @@ public class UIManagerGameLoop : MonoBehaviour
 
     public void SaveGame()
     {
-        _filesMenu.SetActive(true);        
+        _filesMenu.SetActive(true);
+        _gameOverMenu.SetActive(false);
     }
 
     public void Save1()
     {
         MoveTracker.Instance.SaveGame(0);
         _filesMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
         _saves[0].SetText("SAVE 1");
     }
 
@@ -223,6 +226,7 @@ public class UIManagerGameLoop : MonoBehaviour
     {
         MoveTracker.Instance.SaveGame(1);
         _filesMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
         _saves[1].SetText("SAVE 2");
     }
 
@@ -230,6 +234,7 @@ public class UIManagerGameLoop : MonoBehaviour
     {
         MoveTracker.Instance.SaveGame(2);
         _filesMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
         _saves[2].SetText("SAVE 3");
     }
 
@@ -237,6 +242,7 @@ public class UIManagerGameLoop : MonoBehaviour
     {
         MoveTracker.Instance.SaveGame(3);
         _filesMenu.SetActive(false);
+        _gameOverMenu.SetActive(true);
         _saves[3].SetText("SAVE 4");
     }
 }

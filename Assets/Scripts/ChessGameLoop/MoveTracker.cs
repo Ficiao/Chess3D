@@ -8,10 +8,10 @@ public class MoveTracker : MonoBehaviour
     private List<List<Vector2>> _moves;
     private static string[] _files =
     {
-        "/Saves/save1.txt",
-        "/Saves/save2.txt",
-        "/Saves/save3.txt",
-        "/Saves/save4.txt"
+        "/save1.txt",
+        "/save2.txt",
+        "/save3.txt",
+        "/save4.txt"
     };
 
     private static MoveTracker _instance;
@@ -64,7 +64,7 @@ public class MoveTracker : MonoBehaviour
             _json =_json + "\n" + JsonUtility.ToJson(_myclass);            
         }
 
-        File.WriteAllText(Application.dataPath + _files[_fileIndex], _json);
+        File.WriteAllText(Application.persistentDataPath + _files[_fileIndex], _json);
 
 
     }
