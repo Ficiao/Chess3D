@@ -67,6 +67,10 @@ public class PieceController : MonoBehaviour
     {
         Piece _assignedEnemy = _path.AssignedPiece;
         Piece _assignedCastle = _path.AssignedCastle;
+        if (_assignedCastle != null)
+        {
+            _path.AssignedCastle.AssignedAsCastle = null;
+        }        
         PieceMoved?.Invoke();
         StartCoroutine(PieceMover(_path, _assignedEnemy, _assignedCastle));
         _activePiece.Active = false;
@@ -152,8 +156,7 @@ public class PieceController : MonoBehaviour
                 }
             }
 
-            GameManager.Instance.CheckedSide = _checked;
-            _path.AssignedCastle.AssignedAsCastle = null;
+            GameManager.Instance.CheckedSide = _checked;            
             GameManager.Instance.Passantable = null;
         }
         _activePiece = null;

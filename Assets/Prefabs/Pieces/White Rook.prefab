@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2397982}
   - component: {fileID: 6465112}
   - component: {fileID: 8542043815814647278}
+  - component: {fileID: -4573510863912464167}
   m_Layer: 0
   m_Name: White Rook
   m_TagString: Untagged
@@ -113,3 +114,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pieceColor: 0
   _king: {fileID: 0}
+--- !u!95 &-4573510863912464167
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
