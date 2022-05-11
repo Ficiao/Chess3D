@@ -3,83 +3,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void PathSelect(PathPiece piece);
+namespace ChessMainLoop
+{ 
+    public delegate void PathSelect(PathPiece piece);
 
-public class PathPiece : MonoBehaviour
-{
-    public static event PathSelect PathSelect;
-    [SerializeField]
-    private string _name;
-    public string Name { get => _name; }
-
-    private Color _startColor;
-    private Renderer _renderer;
-    private Piece _assignedPiece = null;
-    public Piece AssignedPiece { get => _assignedPiece; set => _assignedPiece = value; }
-    private Piece _assignedCastle = null;
-    public Piece AssignedCastle { get => _assignedCastle; set => _assignedCastle = value; }
-
-    void OnEnable()
+    public class PathPiece : MonoBehaviour
     {
-        PieceController.PieceMoved += Disable;
-    }
+        public static event PathSelect PathSelect;
+        [SerializeField]
+        private string _name;
+        public string Name { get => _name; }
+
+        private Color _startColor;
+        private Renderer _renderer;
+        private Piece _assignedPiece = null;
+        public Piece AssignedPiece { get => _assignedPiece; set => _assignedPiece = value; }
+        private Piece _assignedCastle = null;
+        public Piece AssignedCastle { get => _assignedCastle; set => _assignedCastle = value; }
+
+        void OnEnable()
+        {
+            PieceController.PieceMoved += Disable;
+        }
     
-    void OnDisable()
-    {
-        PieceController.PieceMoved -= Disable;
-    }
-
-    private void Start()
-    {
-        _renderer = GetComponent<Renderer>();
-        _startColor = _renderer.material.color;
-    }
-
-    private void OnMouseEnter()
-    {
-        _renderer.material.color = Color.white;
-    }
-
-    private void OnMouseExit()
-    {
-        _renderer.material.color = _startColor;
-    }
-
-    private void OnMouseDown()
-    {
-        Selected();
-    }
-
-    private void Disable()
-    {
-        if (_assignedPiece != null)
+        void OnDisable()
         {
-            _assignedPiece.AssignedAsEnemy = null;
-            _assignedPiece = null;
+            PieceController.PieceMoved -= Disable;
         }
-        else if (_assignedCastle != null)
+
+        private void Start()
         {
-            _assignedCastle.AssignedAsCastle = null;
-            _assignedCastle = null;
+            _renderer = GetComponent<Renderer>();
+            _startColor = _renderer.material.color;
         }
-        ObjectPool.Instance.RemoveHighlightPath(this);
-    }
 
-    public void AssignPiece(Piece _piece)
-    {
-        _assignedPiece = _piece;
-        _assignedPiece.AssignedAsEnemy = this;
-    }
+        private void OnMouseEnter()
+        {
+            _renderer.material.color = Color.white;
+        }
 
-    public void AssignCastle(Piece _piece)
-    {
-        _assignedCastle = _piece;
-        _piece.AssignedAsCastle = this;
-    }
+        private void OnMouseExit()
+        {
+            _renderer.material.color = _startColor;
+        }
 
-    public void Selected()
-    {
-        _renderer.material.color = _startColor;
-        PathSelect?.Invoke(this);
+        private void OnMouseDown()
+        {
+            Selected();
+        }
+
+        /// <summary>
+        /// Disables the path gameobject. Also resets all refrences pieces have to it.
+        /// </summary>
+        private void Disable()
+        {
+            if (_assignedPiece != null)
+            {
+                _assignedPiece.AssignedAsEnemy = null;
+                _assignedPiece = null;
+            }
+            else if (_assignedCastle != null)
+            {
+                _assignedCastle.AssignedAsCastle = null;
+                _assignedCastle = null;
+            }
+            ObjectPool.Instance.RemoveHighlightPath(this);
+        }
+
+        public void AssignPiece(Piece _piece)
+        {
+            _assignedPiece = _piece;
+            _assignedPiece.AssignedAsEnemy = this;
+        }
+
+        public void AssignCastle(Piece _piece)
+        {
+            _assignedCastle = _piece;
+            _piece.AssignedAsCastle = this;
+        }
+
+        /// <summary>
+        /// Sets the path as selected target for piece movement.
+        /// </summary>
+        public void Selected()
+        {
+            _renderer.material.color = _startColor;
+            PathSelect?.Invoke(this);
+        }
     }
 }

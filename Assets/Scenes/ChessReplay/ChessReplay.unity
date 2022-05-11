@@ -10570,6 +10570,14 @@ MonoBehaviour:
   _boardSize: 8
   _blackPieces: {fileID: 4976436487568625553}
   _whitePieces: {fileID: 4976436489011163985}
+  _whiteQueen: {fileID: 103078, guid: 6f38c700bedefe64f8364436528e5c3d, type: 3}
+  _blackQueen: {fileID: 184594, guid: 1f7a3b3d104b8e44cb39f5356ae1d0bb, type: 3}
+  _whiteBishop: {fileID: 190264, guid: cd05c23b470229c44a8d53d6e86225f6, type: 3}
+  _blackBishop: {fileID: 196866, guid: a71fd906a2159e247ab4d632e46947db, type: 3}
+  _whiteRook: {fileID: 114028, guid: 43ef2ba32fda59c42a1410ea490d494b, type: 3}
+  _blackRook: {fileID: 125018, guid: 9d3e9c36668dcfe44b524760a4c3a3b5, type: 3}
+  _whiteKnight: {fileID: 107724, guid: 7248632fb471af143947a88a47eae959, type: 3}
+  _blackKnight: {fileID: 196802, guid: b6c7ad354ac474944ba26b2895a59759, type: 3}
 --- !u!64 &4976436489632553360
 MeshCollider:
   m_ObjectHideFlags: 0

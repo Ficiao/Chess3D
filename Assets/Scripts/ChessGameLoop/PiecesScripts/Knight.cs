@@ -2,51 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knight : Piece
-{
-    private static readonly int[,] LookupMoves =
+namespace ChessMainLoop
+{ 
+    public class Knight : Piece
     {
-       { 1, -2 },
-       { 2, -1 },
-       { 2, 1 },
-       { 1, 2 },
-       { -1, 2 },
-       { -2, 1 },
-       { -2, -1 },
-       { -1, -2 }
-    };
-
-    public override void CreatePath()
-    {
-        for (int i = 0; i < LookupMoves.GetLength(0); i++)
+        /// <summary>
+        /// Lookup table containing knight movement directions
+        /// </summary>
+        private static readonly int[,] LookupMoves =
         {
-            PathCalculator.PathOneSpot(this, LookupMoves[i, 0], LookupMoves[i, 1]);
-        }
-    }
+           { 1, -2 },
+           { 2, -1 },
+           { 2, 1 },
+           { 1, 2 },
+           { -1, 2 },
+           { -2, 1 },
+           { -2, -1 },
+           { -1, -2 }
+        };
 
-    public override bool IsAttackingKing(int _xPosition, int _yPosition)
-    {
-        for (int i = 0; i < LookupMoves.GetLength(0); i++)
+        public override void CreatePath()
         {
-            if (CheckStateCalculator.KingAtLocation(_xPosition, _yPosition, LookupMoves[i, 0], LookupMoves[i, 1], PieceColor))
+            for (int i = 0; i < LookupMoves.GetLength(0); i++)
             {
-                return true;
+                PathCalculator.PathOneSpot(this, LookupMoves[i, 0], LookupMoves[i, 1]);
             }
         }
 
-        return false;
-    }
-
-    public override bool CanMove(int _xPosition, int _yPosition)
-    {
-        for (int i = 0; i < LookupMoves.GetLength(0); i++)
+        public override bool IsAttackingKing(int _xPosition, int _yPosition)
         {
-            if (GameEndCalculator.CanMoveToSpot(_xPosition, _yPosition, LookupMoves[i, 0], LookupMoves[i, 1], PieceColor))
+            for (int i = 0; i < LookupMoves.GetLength(0); i++)
             {
-                return true;
+                if (CheckStateCalculator.KingAtLocation(_xPosition, _yPosition, LookupMoves[i, 0], LookupMoves[i, 1], PieceColor))
+                {
+                    return true;
+                }
             }
+
+            return false;
         }
 
-        return false;
+        public override bool CanMove(int _xPosition, int _yPosition)
+        {
+            for (int i = 0; i < LookupMoves.GetLength(0); i++)
+            {
+                if (GameEndCalculator.CanMoveToSpot(_xPosition, _yPosition, LookupMoves[i, 0], LookupMoves[i, 1], PieceColor))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

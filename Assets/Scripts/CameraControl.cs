@@ -16,9 +16,17 @@ public class CameraControl : MonoBehaviour
     private float _fastZoomSensitivity = 50f;
     [SerializeField]
     private float _panSensitivity = 0.3f;
+    private Rigidbody _rigidbody;
+
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
 
         var _fastMode = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         var _movementSpeed = _fastMode ? _fastMovementSpeed : this._movementSpeed;
@@ -90,6 +98,10 @@ public class CameraControl : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Checks if the original vector is within parameters after offset translation.
+    /// </summary>
+    /// <returns>Translated vector if its within parameters, or original vector if not</returns>
     private Vector3 TryToMove(Vector3 _position, Vector3 _offset)
     {
         if ((_position + _offset).x < 35f && (_position + _offset).x > -35f)

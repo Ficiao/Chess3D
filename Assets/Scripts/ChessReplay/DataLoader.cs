@@ -3,48 +3,58 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public static class DataLoader
-{
-    private static string[] _files =
+namespace ChessReplay
+{ 
+    public static class DataLoader
     {
-        "/save1.txt",
-        "/save2.txt",
-        "/save3.txt",
-        "/save4.txt"
-    };
-
-    public static List<List<Vector2>> LoadData(int _fileIndex)
-    {
-        List<List<Vector2>> _moves = new List<List<Vector2>>();
-
-        if (File.Exists(Application.persistentDataPath + _files[_fileIndex]))
+        private static readonly string[] _files =
         {
-            string[] _json = File.ReadAllText(Application.persistentDataPath + _files[_fileIndex]).Split("\n");
-            Serializator _moveInstance;
+            "/save1.json",
+            "/save2.json",
+            "/save3.json",
+            "/save4.json"
+        };
 
-            foreach (string _turn in _json)
+        /// <summary>
+        /// Loads moveset data from file selected by index paramter
+        /// </summary>
+        /// <returns>Moveset data</returns>
+        public static List<List<Vector2>> LoadData(int _fileIndex)
+        {
+            List<List<Vector2>> _moves = new List<List<Vector2>>();
+
+            if (File.Exists(Application.persistentDataPath + _files[_fileIndex]))
             {
-                if (_turn.Length == 0)
+                string[] _json = File.ReadAllText(Application.persistentDataPath + _files[_fileIndex]).Split("\n");
+                MovesSerializator _moveInstance;
+
+                foreach (string _turn in _json)
                 {
-                    continue;
+                    if (_turn.Length == 0)
+                    {
+                        continue;
+                    }
+                    _moveInstance = JsonUtility.FromJson<MovesSerializator>(_turn);
+                    _moves.Add(_moveInstance.MoveList);
                 }
-                _moveInstance = JsonUtility.FromJson<Serializator>(_turn);
-                _moves.Add(_moveInstance.MoveList);
             }
-        }
         
-        return _moves;
-    }
+            return _moves;
+        }
 
-    public class Serializator
-    {
-        public List<Vector2> MoveList;
-        public int TurnOrder;
-
-        public Serializator(List<Vector2> _moveList, int _turnOrder)
+        /// <summary>
+        /// Class for json data serialization of moves.
+        /// </summary>
+        public class MovesSerializator
         {
-            MoveList = _moveList;
-            TurnOrder = _turnOrder;
+            public List<Vector2> MoveList;
+            public int TurnOrder;
+
+            public MovesSerializator(List<Vector2> _moveList, int _turnOrder)
+            {
+                MoveList = _moveList;
+                TurnOrder = _turnOrder;
+            }
         }
     }
 }
