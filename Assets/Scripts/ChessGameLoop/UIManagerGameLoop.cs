@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+namespace ChessMainLoop
+{ 
 public class UIManagerGameLoop : MonoBehaviour
 {
     [SerializeField]
@@ -245,4 +247,5 @@ public class UIManagerGameLoop : MonoBehaviour
         _gameOverMenu.SetActive(true);
         _saves[3].SetText("SAVE 4");
     }
+}
 }

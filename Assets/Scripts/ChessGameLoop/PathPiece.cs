@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public delegate void PathSelect(PathPiece piece);
 
 public class PathPiece : MonoBehaviour
@@ -82,4 +84,5 @@ public class PathPiece : MonoBehaviour
         _renderer.material.color = _startColor;
         PathSelect?.Invoke(this);
     }
+}
 }

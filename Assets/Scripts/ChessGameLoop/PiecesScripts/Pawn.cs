@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class Pawn : Piece
 {
     public override void CreatePath()
@@ -164,4 +166,5 @@ public class Pawn : Piece
 
         return false;
     }
+}
 }

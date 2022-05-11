@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class PieceController : MonoBehaviour
 {
     private Piece _activePiece;
@@ -67,6 +69,7 @@ public class PieceController : MonoBehaviour
     {
         Piece _assignedEnemy = _path.AssignedPiece;
         Piece _assignedCastle = _path.AssignedCastle;
+        GameManager.Instance.Moving = true;
         if (_assignedCastle != null)
         {
             _path.AssignedCastle.AssignedAsCastle = null;
@@ -160,6 +163,7 @@ public class PieceController : MonoBehaviour
             GameManager.Instance.Passantable = null;
         }
         _activePiece = null;
+        GameManager.Instance.Moving = false;
         GameManager.Instance.ChangeTurn();
     }
 
@@ -173,4 +177,5 @@ public class PieceController : MonoBehaviour
 
         _activePiece = _piece;
     }
+}
 }

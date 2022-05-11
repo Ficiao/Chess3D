@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessReplay
+{ 
 public class BoardStateReplay : MonoBehaviour
 {
     [SerializeField]
@@ -86,4 +88,5 @@ public class BoardStateReplay : MonoBehaviour
             grid[(int)_startPosition.x, (int)_startPosition.y] = _killed.transform;
         }
     }
+}
 }

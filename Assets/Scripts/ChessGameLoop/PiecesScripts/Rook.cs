@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class Rook : Piece
 {
     [SerializeField]
@@ -29,4 +31,5 @@ public class Rook : Piece
     {
         return GameEndCalculator.CanMoveVertical(_xPosition, _yPosition, PieceColor);
     }
+}
 }

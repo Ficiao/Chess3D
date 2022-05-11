@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessReplay
+{ 
 public class ReplayController : MonoBehaviour
 {
     private List<List<Vector2>> _moveList;
@@ -121,4 +123,5 @@ public class ReplayController : MonoBehaviour
     {
         StopCoroutine(_automaticTurns);
     }
+}
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public static class PathCalculator
 {
     private static readonly int[,] DiagonalLookup =
@@ -186,4 +188,5 @@ public static class PathCalculator
         _path.transform.localPosition = _position;
     }
 
+}
 }

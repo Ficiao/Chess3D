@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class BoardState : MonoBehaviour
 {
     private Piece[,] grid;
@@ -167,5 +169,5 @@ public class BoardState : MonoBehaviour
         _piece.transform.position = _promotingPawn.transform.position;
         _promotingPawn.gameObject.SetActive(false);
     }
-
+}
 }

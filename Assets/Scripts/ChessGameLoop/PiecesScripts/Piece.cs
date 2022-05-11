@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public delegate void Selected(Piece self);
 public enum SideColor
 {
@@ -48,7 +50,7 @@ public abstract class Piece : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (_active == false && GameManager.Instance.TurnPlayer == _pieceColor && _assignedAsCastle == false) 
+        if (_active == false && GameManager.Instance.TurnPlayer == _pieceColor && _assignedAsCastle == false && GameManager.Instance.Moving == false) 
         {
             _active = true;
             Selected?.Invoke(this);
@@ -131,5 +133,5 @@ public abstract class Piece : MonoBehaviour
         _hasMoved = true;
         GameManager.Instance.Passantable = null;
     }
-
+}
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class Queen : Piece
 {    
     public override void CreatePath()
@@ -19,4 +21,5 @@ public class Queen : Piece
     {
         return GameEndCalculator.CanMoveDiagonal(_xPosition, _yPosition, PieceColor) || GameEndCalculator.CanMoveVertical(_xPosition, _yPosition, PieceColor);
     }
+}
 }

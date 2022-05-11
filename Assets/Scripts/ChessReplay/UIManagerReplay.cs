@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+namespace ChessReplay
+{ 
 public class UIManagerReplay : MonoBehaviour
 {
     [SerializeField]
@@ -172,4 +174,5 @@ public class UIManagerReplay : MonoBehaviour
         _replayController.Initialize(3);
         _filesMenu.SetActive(false);
     }
+}
 }

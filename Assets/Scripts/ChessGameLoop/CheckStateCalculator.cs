@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public static class CheckStateCalculator
 {
     public static SideColor CalculateCheck(Piece[,] grid)
@@ -108,4 +110,5 @@ public static class CheckStateCalculator
         }
         return false;
     }
+}
 }

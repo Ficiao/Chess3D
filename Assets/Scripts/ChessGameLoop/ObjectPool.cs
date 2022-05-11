@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+namespace ChessMainLoop
+{ 
 public  class ObjectPool : MonoBehaviour
 {
     private Dictionary<string, Queue<GameObject>> _poolDictionary;
@@ -94,4 +96,5 @@ public  class ObjectPool : MonoBehaviour
             _pieces.Dequeue().gameObject.SetActive(true);
         }
     }
+}
 }

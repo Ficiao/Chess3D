@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+namespace MainMenu
+{
 public class UIManagerMainMenu : MonoBehaviour
 {
     [SerializeField]
@@ -93,4 +95,5 @@ public class UIManagerMainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+}
 }

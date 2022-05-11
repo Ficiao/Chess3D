@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public delegate void PieceMoved();
 
 public class GameManager : MonoBehaviour
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
     private Pawn _promotingPawn = null;
     [SerializeField]
     private CameraControl _camera;
+    private bool _moving = false;
+    public bool Moving { get => _moving; set => _moving = value; }
 
     private static GameManager _instance;
     public static GameManager Instance { get => _instance; }
@@ -97,4 +101,5 @@ public class GameManager : MonoBehaviour
         }
         _promotingPawn = null;
     }
+}
 }

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class King : Piece
 {
     private static readonly int[,] LookupMoves =
@@ -72,4 +74,5 @@ public class King : Piece
 
         return false;
     }
+}
 }

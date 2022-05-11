@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+namespace ChessReplay
+{ 
 public static class DataLoader
 {
     private static string[] _files =
@@ -47,4 +49,5 @@ public static class DataLoader
             TurnOrder = _turnOrder;
         }
     }
+}
 }

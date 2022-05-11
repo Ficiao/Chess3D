@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public static class GameEndCalculator 
 {
     public static SideColor CheckIfGameEnd(Piece[,] grid)
@@ -131,4 +133,5 @@ public static class GameEndCalculator
         }
         return false;
     }
+}
 }

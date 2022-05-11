@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class MoveTracker : MonoBehaviour
 {
     private List<List<Vector2>> _moves;
@@ -80,4 +82,5 @@ public class MoveTracker : MonoBehaviour
             TurnOrder = _turnOrder;
         }
     }
+}
 }

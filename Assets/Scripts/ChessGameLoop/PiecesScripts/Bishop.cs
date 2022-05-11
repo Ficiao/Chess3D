@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class Bishop : Piece
 {
     public override void CreatePath()
@@ -18,4 +20,5 @@ public class Bishop : Piece
     {
         return GameEndCalculator.CanMoveDiagonal(_xPosition, _yPosition, PieceColor);
     }
+}
 }

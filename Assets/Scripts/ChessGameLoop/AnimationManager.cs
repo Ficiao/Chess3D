@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace ChessMainLoop
+{ 
 public class AnimationManager : MonoBehaviour
 {
     [SerializeField]
@@ -110,4 +112,5 @@ public class AnimationManager : MonoBehaviour
         _piece.transform.localPosition = _target;
         _active = false;
     }
+}
 }
