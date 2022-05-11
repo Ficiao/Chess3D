@@ -4,32 +4,32 @@ using UnityEngine;
 
 namespace ChessMainLoop
 { 
-public class Rook : Piece
-{
-    [SerializeField]
-    private King _king;
-
-    public override void CreatePath()
+    public class Rook : Piece
     {
-        PathCalculator.VerticalPath(this);
-        if (_king == null)
+        [SerializeField]
+        private King _king;
+
+        public override void CreatePath()
         {
-            return;
+            PathCalculator.VerticalPath(this);
+            if (_king == null)
+            {
+                return;
+            }
+            if (_king.HasMoved == false && HasMoved == false)
+            {
+                PathCalculator.CastleSpot(this, _king);
+            }
         }
-        if (_king.HasMoved == false && HasMoved == false)
+
+        public override bool IsAttackingKing(int _xPosition, int _yPosition)
         {
-            PathCalculator.CastleSpot(this, _king);
+            return CheckStateCalculator.SearchForKingVertical(_xPosition, _yPosition, PieceColor);
+        }
+
+        public override bool CanMove(int _xPosition, int _yPosition)
+        {
+            return GameEndCalculator.CanMoveVertical(_xPosition, _yPosition, PieceColor);
         }
     }
-
-    public override bool IsAttackingKing(int _xPosition, int _yPosition)
-    {
-        return CheckStateCalculator.SearchForKingVertical(_xPosition, _yPosition, PieceColor);
-    }
-
-    public override bool CanMove(int _xPosition, int _yPosition)
-    {
-        return GameEndCalculator.CanMoveVertical(_xPosition, _yPosition, PieceColor);
-    }
-}
 }
