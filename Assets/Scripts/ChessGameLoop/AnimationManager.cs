@@ -25,8 +25,8 @@ namespace ChessMainLoop
         private float _moveSpeed = 20f;
         [SerializeField]
         private AudioSource _moveSound;
-        private bool _active = false;
-        public bool Active { get => _active; }
+        private bool _isActive = false;
+        public bool IsActive { get => _isActive; }
 
         private static AnimationManager _instance;
         public static AnimationManager Instance { get => _instance; }
@@ -81,7 +81,7 @@ namespace ChessMainLoop
 
         public void MovePiece(Piece _piece, Vector3 _target, Piece _killTarget)
         {
-            _active = true;
+            _isActive = true;
             StartCoroutine(MoveAnimation(_piece, _target, _killTarget));
         }
 
@@ -123,7 +123,7 @@ namespace ChessMainLoop
 
             _target.y = _piece.transform.localPosition.y;
             _piece.transform.localPosition = _target;
-            _active = false;
+            _isActive = false;
         }
     }
 }

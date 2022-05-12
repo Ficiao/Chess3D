@@ -22,8 +22,8 @@ namespace ChessMainLoop
         private CameraControl _camera;
         [SerializeField]
         private AudioSource _checkSound;
-        private bool _moving = false;
-        public bool Moving { get => _moving; set => _moving = value; }
+        private bool _isPieceMoving = false;
+        public bool IsPieceMoving { get => _isPieceMoving; set => _isPieceMoving = value; }
 
         private static GameManager _instance;
         public static GameManager Instance { get => _instance; }

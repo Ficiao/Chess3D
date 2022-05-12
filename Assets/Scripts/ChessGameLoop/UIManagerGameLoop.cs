@@ -162,7 +162,7 @@ namespace ChessMainLoop
 
         public void SelectedQueen()
         {
-            if (GameManager.Instance.Moving == true)
+            if (GameManager.Instance.IsPieceMoving == true)
             {
                 return;
             }
@@ -181,7 +181,7 @@ namespace ChessMainLoop
 
         public void SelectedRook()
         {
-            if (GameManager.Instance.Moving == true)
+            if (GameManager.Instance.IsPieceMoving == true)
             {
                 return;
             }
@@ -200,7 +200,7 @@ namespace ChessMainLoop
 
         public void SelectedBishop()
         {
-            if (GameManager.Instance.Moving == true)
+            if (GameManager.Instance.IsPieceMoving == true)
             {
                 return;
             }
@@ -219,7 +219,7 @@ namespace ChessMainLoop
 
         public void SelectedKnight()
         {
-            if (GameManager.Instance.Moving == true)
+            if (GameManager.Instance.IsPieceMoving == true)
             {
                 return;
             }

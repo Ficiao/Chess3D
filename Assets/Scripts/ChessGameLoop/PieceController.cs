@@ -48,7 +48,7 @@ namespace ChessMainLoop
             }
 
             PieceMoved?.Invoke();
-            _activePiece.Active = false;
+            _activePiece.IsActive = false;
             _activePiece = null;
 
         }
@@ -73,14 +73,14 @@ namespace ChessMainLoop
         {
             Piece _assignedEnemy = _path.AssignedPiece;
             Piece _assignedCastle = _path.AssignedCastle;
-            GameManager.Instance.Moving = true;
+            GameManager.Instance.IsPieceMoving = true;
             if (_assignedCastle != null)
             {
                 _path.AssignedCastle.AssignedAsCastle = null;
             }        
             PieceMoved?.Invoke();
             StartCoroutine(PieceMover(_path, _assignedEnemy, _assignedCastle));
-            _activePiece.Active = false;
+            _activePiece.IsActive = false;
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace ChessMainLoop
                 _targetPosition.y = _activePiece.transform.localPosition.y;
                 _targetPosition.z = _yPath * BoardState.Offset;
                 AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, _assignedEnemy);
-                while (AnimationManager.Instance.Active == true)
+                while (AnimationManager.Instance.IsActive == true)
                 {
                     yield return new WaitForSeconds(0.01f);
                 }
@@ -125,7 +125,7 @@ namespace ChessMainLoop
                     _targetPosition.y = _activePiece.transform.localPosition.y;
                     _targetPosition.z = _yMedian * BoardState.Offset;
                     AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, null);
-                    while (AnimationManager.Instance.Active == true)
+                    while (AnimationManager.Instance.IsActive == true)
                     {
                         yield return new WaitForSeconds(0.01f);
                     }
@@ -137,7 +137,7 @@ namespace ChessMainLoop
                     _targetPosition.y = _activePiece.transform.localPosition.y;
                     _targetPosition.z = (_yMedian > _yPiece ? _yMedian - 1 : _yMedian + 1) * BoardState.Offset;
                     AnimationManager.Instance.MovePiece(_assignedCastle, _targetPosition, null);
-                    while (AnimationManager.Instance.Active == true)
+                    while (AnimationManager.Instance.IsActive == true)
                     {
                         yield return new WaitForSeconds(0.01f);
                     }
@@ -150,7 +150,7 @@ namespace ChessMainLoop
                     _targetPosition.y = _activePiece.transform.localPosition.y;
                     _targetPosition.z = (_yMedian > _yPiece ? _yMedian + 1 : _yMedian - 1) * BoardState.Offset;
                     AnimationManager.Instance.MovePiece(_activePiece, _targetPosition, null);
-                    while (AnimationManager.Instance.Active == true)
+                    while (AnimationManager.Instance.IsActive == true)
                     {
                         yield return new WaitForSeconds(0.01f);
                     }
@@ -162,7 +162,7 @@ namespace ChessMainLoop
                     _targetPosition.y = _activePiece.transform.localPosition.y;
                     _targetPosition.z = _yMedian * BoardState.Offset;
                     AnimationManager.Instance.MovePiece(_assignedCastle, _targetPosition, null);
-                    while (AnimationManager.Instance.Active == true)
+                    while (AnimationManager.Instance.IsActive == true)
                     {
                         yield return new WaitForSeconds(0.01f);
                     }
@@ -172,7 +172,7 @@ namespace ChessMainLoop
                 GameManager.Instance.Passantable = null;
             }
             _activePiece = null;
-            GameManager.Instance.Moving = false;
+            GameManager.Instance.IsPieceMoving = false;
             GameManager.Instance.ChangeTurn();
         }
 
@@ -183,7 +183,7 @@ namespace ChessMainLoop
         {
             if (_activePiece)
             {
-                _activePiece.Active = false;
+                _activePiece.IsActive = false;
                 PieceMoved?.Invoke();
             }
 
