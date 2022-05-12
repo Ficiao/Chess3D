@@ -24,8 +24,8 @@ namespace ChessMainLoop
         public SideColor PieceColor { get => _pieceColor; }
         private Renderer _renderer;
         private Vector3 _startPosition;
-        private bool _active = false;
-        public bool Active { get => _active; set { _active = false; _renderer.material.color = _startColor; } }
+        private bool _isActive = false;
+        public bool IsActive { get => _isActive; set { _isActive = false; _renderer.material.color = _startColor; } }
         private Color _startColor;
         private bool _hasMoved = false;
         public bool HasMoved { get => _hasMoved; set => _hasMoved = value; }
@@ -61,9 +61,9 @@ namespace ChessMainLoop
         //If its turn players piece sets it as selected and sets path pieces for it. If the piece is target of enemy or castle calls select method of path object this piece is assing to.
         private void OnMouseDown()
         {
-            if (_active == false && GameManager.Instance.TurnPlayer == _pieceColor && _assignedAsCastle == false && GameManager.Instance.Moving == false) 
+            if (_isActive == false && GameManager.Instance.TurnPlayer == _pieceColor && _assignedAsCastle == false && GameManager.Instance.IsPieceMoving == false) 
             {
-                _active = true;
+                _isActive = true;
                 Selected?.Invoke(this);
                 CreatePath();
                 _renderer.material.color = Color.yellow;
@@ -96,7 +96,7 @@ namespace ChessMainLoop
 
         private void OnMouseExit()
         {
-            if ((_active == false) || _assignedAsEnemy || _assignedAsCastle)
+            if ((_isActive == false) || _assignedAsEnemy || _assignedAsCastle)
             {
                 _renderer.material.color = _startColor;
             }

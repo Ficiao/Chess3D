@@ -9,7 +9,7 @@ namespace ChessReplay
         [SerializeField]
         private int _boardSize;
         public int BoardSize { get => _boardSize; }
-        private Transform[,] grid;
+        private Transform[,] _gridState;
         [SerializeField]
         private GameObject _blackPieces;
         [SerializeField]
@@ -59,14 +59,14 @@ namespace ChessReplay
         public void InitializeGrid()
         {
             _promotedOnesDict = new Dictionary<int, GameObject[]>();
-            grid = new Transform[_boardSize, _boardSize];
+            _gridState = new Transform[_boardSize, _boardSize];
             _killedDict = new Dictionary<int, GameObject>();
 
-            for (int i = 0; i < grid.GetLength(0); i++)
+            for (int i = 0; i < _gridState.GetLength(0); i++)
             {
-                for (int j = 0; j < grid.GetLength(1); j++)
+                for (int j = 0; j < _gridState.GetLength(1); j++)
                 {
-                    grid[i, j] = null;
+                    _gridState[i, j] = null;
                 }
             }
 
@@ -74,13 +74,13 @@ namespace ChessReplay
             {
                 int x = (int)(child.localPosition.x / Displacement);
                 int y = (int)(child.localPosition.z / Displacement);
-                grid[x, y] = child;
+                _gridState[x, y] = child;
             }
             foreach (Transform child in _whitePieces.transform)
             {
                 int x = (int)(child.localPosition.x / Displacement);
                 int y = (int)(child.localPosition.z / Displacement);
-                grid[x, y] = child;
+                _gridState[x, y] = child;
             }
         }
 
@@ -90,7 +90,7 @@ namespace ChessReplay
         /// If end position vector is negative, based on the value chooses a piece to replace pawn with for promotion or kills en passanted piece
         public void MovePiece(Vector2 _startPosition, Vector2 _endPosition, int _turnCount)
         {
-            if (grid == null)
+            if (_gridState == null)
             {
                 InitializeGrid();
             }
@@ -99,48 +99,48 @@ namespace ChessReplay
             switch (_endPosition.x)
             {
                 case -1:
-                    _killedDict.Add(_turnCount, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject);
-                    grid[(int)_startPosition.x, (int)_startPosition.y].gameObject.SetActive(false);
-                    grid[(int)_startPosition.x, (int)_startPosition.y] = null;
+                    _killedDict.Add(_turnCount, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject);
+                    _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject.SetActive(false);
+                    _gridState[(int)_startPosition.x, (int)_startPosition.y] = null;
                     return;
                 case -2:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackQueen, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackQueen, _turnCount);
                     return;
                 case -3:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteQueen, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteQueen, _turnCount);
                     return;
                 case -4:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackRook, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackRook, _turnCount);
                     return;
                 case -5:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteRook, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteRook, _turnCount);
                     return;
                 case -6:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackBishop, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackBishop, _turnCount);
                     return;
                 case -7:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteBishop, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteBishop, _turnCount);
                     return;
                 case -8:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackKnight, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _blackKnight, _turnCount);
                     return;
                 case -9:
-                    PromotePawn(_startPosition, grid[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteKnight, _turnCount);
+                    PromotePawn(_startPosition, _gridState[(int)_startPosition.x, (int)_startPosition.y].gameObject, _whiteKnight, _turnCount);
                     return;
                 default:
                     break;
             }
 
-            if(grid[(int)_endPosition.x, (int)_endPosition.y] != null)
+            if(_gridState[(int)_endPosition.x, (int)_endPosition.y] != null)
             {
-                _killedDict.Add(_turnCount, grid[(int)_endPosition.x, (int)_endPosition.y].gameObject);
-                grid[(int)_endPosition.x, (int)_endPosition.y].gameObject.SetActive(false);
+                _killedDict.Add(_turnCount, _gridState[(int)_endPosition.x, (int)_endPosition.y].gameObject);
+                _gridState[(int)_endPosition.x, (int)_endPosition.y].gameObject.SetActive(false);
             }
 
-            grid[(int)_endPosition.x, (int)_endPosition.y] = grid[(int)_startPosition.x, (int)_startPosition.y];
-            grid[(int)_startPosition.x, (int)_startPosition.y] = null;
-            grid[(int)_endPosition.x, (int)_endPosition.y].localPosition = new Vector3(_endPosition.x * Displacement, 
-                grid[(int)_endPosition.x, (int)_endPosition.y].localPosition.y, _endPosition.y * Displacement);
+            _gridState[(int)_endPosition.x, (int)_endPosition.y] = _gridState[(int)_startPosition.x, (int)_startPosition.y];
+            _gridState[(int)_startPosition.x, (int)_startPosition.y] = null;
+            _gridState[(int)_endPosition.x, (int)_endPosition.y].localPosition = new Vector3(_endPosition.x * Displacement, 
+                _gridState[(int)_endPosition.x, (int)_endPosition.y].localPosition.y, _endPosition.y * Displacement);
         }
 
         public void PromotePawn(Vector3 _endPosition, GameObject _pawn, GameObject _prefab, int _turnCount)
@@ -148,7 +148,7 @@ namespace ChessReplay
             GameObject _piece = Instantiate(_prefab, _pawn.transform.parent);
             _piece.transform.position = _pawn.transform.position;
             _piece.transform.localScale = _pawn.transform.localScale;
-            grid[(int)_endPosition.x, (int)_endPosition.y] = _piece.transform;
+            _gridState[(int)_endPosition.x, (int)_endPosition.y] = _piece.transform;
             GameObject[] _promotedPair =
             {
                 _pawn,
@@ -169,7 +169,7 @@ namespace ChessReplay
             {
                 _killedDict.Remove(_turnCount);
                 _killed.SetActive(true);
-                grid[(int)(_killed.transform.localPosition.x / Displacement), (int)(_killed.transform.localPosition.z / Displacement)] = _killed.transform;
+                _gridState[(int)(_killed.transform.localPosition.x / Displacement), (int)(_killed.transform.localPosition.z / Displacement)] = _killed.transform;
             }
             
             if (_promotedOnesDict.TryGetValue(_turnCount, out GameObject[] _promotionPair))            
@@ -177,7 +177,7 @@ namespace ChessReplay
                 _promotedOnesDict.Remove(_turnCount);
                 _promotionPair[0].SetActive(true);
                 _promotionPair[0].transform.localPosition = _promotionPair[1].transform.localPosition;
-                grid[(int)(_promotionPair[0].transform.localPosition.x / Displacement),
+                _gridState[(int)(_promotionPair[0].transform.localPosition.x / Displacement),
                     (int)(_promotionPair[0].transform.localPosition.z / Displacement)] = _promotionPair[0].transform;
                 Destroy(_promotionPair[1]);
             }
